@@ -14,19 +14,21 @@ module TeslaFleetManagementApi
     end
 
     # Initialization constructor.
-    def initialize(oauth_2_credentials, config)
+    def initialize(oauth2_credentials, config)
       auth_params = {}
-      @_oauth_client_id = oauth_2_credentials.oauth_client_id unless
-        oauth_2_credentials.nil? || oauth_2_credentials.oauth_client_id.nil?
-      @_oauth_client_secret = oauth_2_credentials.oauth_client_secret unless
-        oauth_2_credentials.nil? || oauth_2_credentials.oauth_client_secret.nil?
-      @_oauth_redirect_uri = oauth_2_credentials.oauth_redirect_uri unless
-        oauth_2_credentials.nil? || oauth_2_credentials.oauth_redirect_uri.nil?
-      @_oauth_token = oauth_2_credentials.oauth_token unless
-        oauth_2_credentials.nil? || oauth_2_credentials.oauth_token.nil?
+      @_o_auth_client_id = oauth2_credentials.o_auth_client_id unless
+        oauth2_credentials.nil? || oauth2_credentials.o_auth_client_id.nil?
+      @_o_auth_client_secret = oauth2_credentials.o_auth_client_secret unless
+        oauth2_credentials.nil? || oauth2_credentials.o_auth_client_secret.nil?
+      @_o_auth_redirect_uri = oauth2_credentials.o_auth_redirect_uri unless
+        oauth2_credentials.nil? || oauth2_credentials.o_auth_redirect_uri.nil?
+      @_o_auth_token = oauth2_credentials.o_auth_token unless
+        oauth2_credentials.nil? || oauth2_credentials.o_auth_token.nil?
+      @_o_auth_scopes = oauth2_credentials.o_auth_scopes unless
+        oauth2_credentials.nil? || oauth2_credentials.o_auth_scopes.nil?
       @_config = config
-      @_o_auth_api = OauthAuthorizationController.new(config)
-      auth_params[:Authorization] = "Bearer #{@_oauth_token.access_token}" unless @_oauth_token.nil?
+      @_o_auth_api = OAuthAuthorizationController.new(config)
+      auth_params[:Authorization] = "Bearer #{@_o_auth_token.access_token}" unless @_o_auth_token.nil?
 
       super auth_params
     end
@@ -34,7 +36,7 @@ module TeslaFleetManagementApi
     # Validates the oAuth token.
     # @return [Boolean] true if the token is present and not expired.
     def valid
-      !@_oauth_token.nil? && !token_expired?(@_oauth_token)
+      !@_o_auth_token.nil? && !token_expired?(@_o_auth_token)
     end
 
     # Builds and returns an authorization URL.
@@ -48,8 +50,8 @@ module TeslaFleetManagementApi
       auth_url += '/authorize'
       query_params = {
         'response_type' => 'code',
-        'client_id' => @_oauth_client_id,
-        'redirect_uri' => @_oauth_redirect_uri
+        'client_id' => @_o_auth_client_id,
+        'redirect_uri' => @_o_auth_redirect_uri
       }
       query_params['scope'] = Array(@_o_auth_scopes).compact.join(' ') if @_o_auth_scopes
       query_params['state'] = state if state
@@ -62,7 +64,7 @@ module TeslaFleetManagementApi
     # Builds the basic auth header for endpoints in the OAuth Authorization Controller.
     # @return [String] The value of the Authentication header.
     def build_basic_auth_header
-      "Basic #{AuthHelper.get_base64_encoded_value(@_oauth_client_id, @_oauth_client_secret)}"
+      "Basic #{AuthHelper.get_base64_encoded_value(@_o_auth_client_id, @_o_auth_client_secret)}"
     end
 
     # Fetches the token.
@@ -70,10 +72,10 @@ module TeslaFleetManagementApi
     # @param [Hash] additional_params Any additional form parameters.
     # @return [OAuthToken] The oAuth token instance.
     def fetch_token(auth_code, additional_params: nil)
-      token = @_o_auth_api.request_token_oauth_2(
+      token = @_o_auth_api.request_token_oauth2(
         build_basic_auth_header,
         auth_code,
-        @_oauth_redirect_uri,
+        @_o_auth_redirect_uri,
         _field_parameters: additional_params
       ).data
       if token.respond_to?('expires_in') && !token.expires_in.nil?
@@ -93,9 +95,10 @@ module TeslaFleetManagementApi
     # @param [Hash] additional_params Any additional form parameters.
     # @return [OAuthToken] The oAuth token instance.
     def refresh_token(additional_params: nil)
-      token = @_o_auth_api.refresh_token_oauth_2(
+      token = @_o_auth_api.refresh_token_oauth2(
         build_basic_auth_header,
-        @_oauth_token.refresh_token,
+        @_o_auth_token.refresh_token,
+        scope: !@_o_auth_scopes.nil? ? Array(@_o_auth_scopes).compact.join(' ') : nil,
         _field_parameters: additional_params
       ).data
       if token.respond_to?('expires_in') && !token.expires_in.nil?
@@ -107,48 +110,54 @@ module TeslaFleetManagementApi
 
   # Data class for Oauth2Credentials.
   class Oauth2Credentials
-    attr_reader :oauth_client_id, :oauth_client_secret, :oauth_redirect_uri,
-                :oauth_token
+    attr_reader :o_auth_client_id, :o_auth_client_secret, :o_auth_redirect_uri,
+                :o_auth_token, :o_auth_scopes
 
-    def initialize(oauth_client_id:, oauth_client_secret:, oauth_redirect_uri:,
-                   oauth_token: nil)
-      raise ArgumentError, 'oauth_client_id cannot be nil' if oauth_client_id.nil?
-      raise ArgumentError, 'oauth_client_secret cannot be nil' if oauth_client_secret.nil?
-      raise ArgumentError, 'oauth_redirect_uri cannot be nil' if oauth_redirect_uri.nil?
+    def initialize(o_auth_client_id:, o_auth_client_secret:,
+                   o_auth_redirect_uri:, o_auth_token: nil, o_auth_scopes: nil)
+      raise ArgumentError, 'o_auth_client_id cannot be nil' if o_auth_client_id.nil?
+      raise ArgumentError, 'o_auth_client_secret cannot be nil' if o_auth_client_secret.nil?
+      raise ArgumentError, 'o_auth_redirect_uri cannot be nil' if o_auth_redirect_uri.nil?
 
-      @oauth_client_id = oauth_client_id
-      @oauth_client_secret = oauth_client_secret
-      @oauth_redirect_uri = oauth_redirect_uri
-      @oauth_token = oauth_token
+      @o_auth_client_id = o_auth_client_id
+      @o_auth_client_secret = o_auth_client_secret
+      @o_auth_redirect_uri = o_auth_redirect_uri
+      @o_auth_token = o_auth_token
+      @o_auth_scopes = o_auth_scopes
     end
 
     def self.from_env
-      oauth_client_id = ENV['OAUTH_2_OAUTH_CLIENT_ID']
-      oauth_client_secret = ENV['OAUTH_2_OAUTH_CLIENT_SECRET']
-      oauth_redirect_uri = ENV['OAUTH_2_OAUTH_REDIRECT_URI']
+      o_auth_client_id = ENV['OAUTH2_O_AUTH_CLIENT_ID']
+      o_auth_client_secret = ENV['OAUTH2_O_AUTH_CLIENT_SECRET']
+      o_auth_redirect_uri = ENV['OAUTH2_O_AUTH_REDIRECT_URI']
+      o_auth_scopes = ENV['OAUTH2_O_AUTH_SCOPES']
       all_nil = [
-        oauth_client_id,
-        oauth_client_secret,
-        oauth_redirect_uri
+        o_auth_client_id,
+        o_auth_client_secret,
+        o_auth_redirect_uri
       ].all?(&:nil?)
       return nil if all_nil
 
-      new(oauth_client_id: oauth_client_id,
-          oauth_client_secret: oauth_client_secret,
-          oauth_redirect_uri: oauth_redirect_uri)
+      new(o_auth_client_id: o_auth_client_id,
+          o_auth_client_secret: o_auth_client_secret,
+          o_auth_redirect_uri: o_auth_redirect_uri,
+          o_auth_scopes: o_auth_scopes)
     end
 
-    def clone_with(oauth_client_id: nil, oauth_client_secret: nil,
-                   oauth_redirect_uri: nil, oauth_token: nil)
-      oauth_client_id ||= self.oauth_client_id
-      oauth_client_secret ||= self.oauth_client_secret
-      oauth_redirect_uri ||= self.oauth_redirect_uri
-      oauth_token ||= self.oauth_token
+    def clone_with(o_auth_client_id: nil, o_auth_client_secret: nil,
+                   o_auth_redirect_uri: nil, o_auth_token: nil,
+                   o_auth_scopes: nil)
+      o_auth_client_id ||= self.o_auth_client_id
+      o_auth_client_secret ||= self.o_auth_client_secret
+      o_auth_redirect_uri ||= self.o_auth_redirect_uri
+      o_auth_token ||= self.o_auth_token
+      o_auth_scopes ||= self.o_auth_scopes
 
-      Oauth2Credentials.new(oauth_client_id: oauth_client_id,
-                            oauth_client_secret: oauth_client_secret,
-                            oauth_redirect_uri: oauth_redirect_uri,
-                            oauth_token: oauth_token)
+      Oauth2Credentials.new(o_auth_client_id: o_auth_client_id,
+                            o_auth_client_secret: o_auth_client_secret,
+                            o_auth_redirect_uri: o_auth_redirect_uri,
+                            o_auth_token: o_auth_token,
+                            o_auth_scopes: o_auth_scopes)
     end
   end
 end

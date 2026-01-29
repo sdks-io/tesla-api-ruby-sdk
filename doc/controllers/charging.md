@@ -25,6 +25,12 @@ Returns the paginated charging history for the authenticated account.
 def get_charging_history
 ```
 
+## Requires scope
+
+### oauth2
+
+`energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
+
 ## Response Type
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `data` property of this instance returns the response data which is of type [`ChargingHistoryResponse`](../../doc/models/charging-history-response.md).
@@ -56,6 +62,12 @@ def get_charging_invoice(id)
 |  --- | --- | --- | --- |
 | `id` | `String` | Template, Required | Charging session invoice identifier |
 
+## Requires scope
+
+### oauth2
+
+`energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
+
 ## Response Type
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `data` property of this instance returns the response data which is of type `Mixed`.
@@ -82,6 +94,12 @@ Returns charging session information. Only available for business fleet owners.
 ```ruby
 def get_charging_sessions
 ```
+
+## Requires scope
+
+### oauth2
+
+`energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
 ## Response Type
 

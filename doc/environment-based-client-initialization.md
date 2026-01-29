@@ -47,9 +47,10 @@ Values provided through arguments take precedence over those defined in environm
 ENVIRONMENT='production'
 
 BEARER_AUTH_ACCESS_TOKEN='accessToken'
-OAUTH_2_OAUTH_CLIENT_ID='oauthClientId'
-OAUTH_2_OAUTH_CLIENT_SECRET='oauthClientSecret'
-OAUTH_2_OAUTH_REDIRECT_URI='oauthRedirectUri'
+OAUTH2_O_AUTH_CLIENT_ID='oAuthClientId'
+OAUTH2_O_AUTH_CLIENT_SECRET='oAuthClientSecret'
+OAUTH2_O_AUTH_REDIRECT_URI='oAuthRedirectUri'
+OAUTH2_O_AUTH_SCOPES=READ,WRITE
 
 LOG_LEVEL=Debug
 MASK_SENSITIVE_HEADERS=true

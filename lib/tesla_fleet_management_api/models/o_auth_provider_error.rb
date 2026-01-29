@@ -5,8 +5,8 @@
 
 module TeslaFleetManagementApi
   # OAuth 2 Authorization error codes
-  class OauthProviderError
-    OAUTH_PROVIDER_ERROR = [
+  class OAuthProviderError
+    O_AUTH_PROVIDER_ERROR = [
       # The request is missing a required parameter, includes an unsupported
       # parameter value (other than grant type), repeats a parameter, includes
       # multiple credentials, utilizes more than one mechanism for
@@ -39,7 +39,7 @@ module TeslaFleetManagementApi
     def self.validate(value)
       return false if value.nil?
 
-      OAUTH_PROVIDER_ERROR.include?(value)
+      O_AUTH_PROVIDER_ERROR.include?(value)
     end
 
     def self.from_value(value, default_value = INVALID_REQUEST)

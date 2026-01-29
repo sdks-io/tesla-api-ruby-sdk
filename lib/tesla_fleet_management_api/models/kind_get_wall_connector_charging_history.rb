@@ -4,7 +4,7 @@
 # APIMATIC v3.0 ( https://www.apimatic.io ).
 
 module TeslaFleetManagementApi
-  # kind_Get wall connector charging history.
+  # kind_getWallConnectorChargingHistory.
   class KindGetWallConnectorChargingHistory
     KIND_GET_WALL_CONNECTOR_CHARGING_HISTORY = [
       # TODO: Write general description for CHARGE

@@ -46,7 +46,7 @@ module TeslaFleetManagementApi
   # are configured in this class.
   class Configuration < CoreLibrary::HttpClientConfiguration
     # The attribute readers for properties.
-    attr_reader :environment, :bearer_auth_credentials, :oauth_2_credentials
+    attr_reader :environment, :bearer_auth_credentials, :oauth2_credentials
 
     class << self
       attr_reader :environments
@@ -58,7 +58,7 @@ module TeslaFleetManagementApi
       retry_statuses: [408, 413, 429, 500, 502, 503, 504, 521, 522, 524],
       retry_methods: %i[get put], http_callback: nil, proxy_settings: nil,
       logging_configuration: nil, environment: Environment::PRODUCTION,
-      bearer_auth_credentials: nil, oauth_2_credentials: nil
+      bearer_auth_credentials: nil, oauth2_credentials: nil
     )
       super connection: connection, adapter: adapter, timeout: timeout,
             max_retries: max_retries, retry_interval: retry_interval,
@@ -74,7 +74,7 @@ module TeslaFleetManagementApi
       @bearer_auth_credentials = bearer_auth_credentials
 
       # The object holding OAuth 2 Authorization Code Grant credentials
-      @oauth_2_credentials = oauth_2_credentials
+      @oauth2_credentials = oauth2_credentials
 
       # The Http Client to use for making requests.
       set_http_client CoreLibrary::FaradayClient.new(self)
@@ -85,7 +85,7 @@ module TeslaFleetManagementApi
                    retry_statuses: nil, retry_methods: nil, http_callback: nil,
                    proxy_settings: nil, logging_configuration: nil,
                    environment: nil, bearer_auth_credentials: nil,
-                   oauth_2_credentials: nil)
+                   oauth2_credentials: nil)
       connection ||= self.connection
       adapter ||= self.adapter
       timeout ||= self.timeout
@@ -99,7 +99,7 @@ module TeslaFleetManagementApi
       logging_configuration ||= self.logging_configuration
       environment ||= self.environment
       bearer_auth_credentials ||= self.bearer_auth_credentials
-      oauth_2_credentials ||= self.oauth_2_credentials
+      oauth2_credentials ||= self.oauth2_credentials
 
       Configuration.new(connection: connection, adapter: adapter,
                         timeout: timeout, max_retries: max_retries,
@@ -112,7 +112,7 @@ module TeslaFleetManagementApi
                         logging_configuration: logging_configuration,
                         environment: environment,
                         bearer_auth_credentials: bearer_auth_credentials,
-                        oauth_2_credentials: oauth_2_credentials)
+                        oauth2_credentials: oauth2_credentials)
     end
 
 
@@ -156,7 +156,7 @@ module TeslaFleetManagementApi
 
       # === Authentication credentials ===
       bearer_auth_credentials = BearerAuthCredentials.from_env
-      oauth_2_credentials = Oauth2Credentials.from_env
+      oauth2_credentials = Oauth2Credentials.from_env
 
       # === Proxy settings ===
       proxy_settings = ProxySettings.from_env
@@ -172,7 +172,7 @@ module TeslaFleetManagementApi
         retry_statuses: retry_statuses,
         retry_methods: retry_methods,
         bearer_auth_credentials: bearer_auth_credentials,
-        oauth_2_credentials: oauth_2_credentials,
+        oauth2_credentials: oauth2_credentials,
         proxy_settings: proxy_settings,
         logging_configuration: logging_configuration
       )

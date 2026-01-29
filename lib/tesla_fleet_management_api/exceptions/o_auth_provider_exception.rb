@@ -5,12 +5,12 @@
 
 module TeslaFleetManagementApi
   # OAuth 2 Authorization endpoint exception.
-  class OauthProviderException < APIException
+  class OAuthProviderException < APIException
     SKIP = Object.new
     private_constant :SKIP
 
     # Gets or sets error code.
-    # @return [OauthProviderError]
+    # @return [OAuthProviderError]
     attr_accessor :error
 
     # Gets or sets human-readable text providing additional information on

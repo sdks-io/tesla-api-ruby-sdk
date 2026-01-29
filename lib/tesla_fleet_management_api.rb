@@ -31,7 +31,7 @@ require_relative 'tesla_fleet_management_api/logging/configuration/' \
                  'api_logging_configuration'
 require_relative 'tesla_fleet_management_api/logging/sdk_logger'
 require_relative 'tesla_fleet_management_api/http/auth/bearer_auth'
-require_relative 'tesla_fleet_management_api/http/auth/oauth_2'
+require_relative 'tesla_fleet_management_api/http/auth/oauth2'
 
 # Models
 require_relative 'tesla_fleet_management_api/models/base_model'
@@ -128,17 +128,27 @@ require_relative 'tesla_fleet_management_api/models/' \
                  'response_api1_dx_vehicles_options_response'
 require_relative 'tesla_fleet_management_api/models/' \
                  'response_api1_dx_warranty_details_response'
-require_relative 'tesla_fleet_management_api/models/oauth_token'
+require_relative 'tesla_fleet_management_api/models/command_result'
+require_relative 'tesla_fleet_management_api/models/guest_mode_request'
+require_relative 'tesla_fleet_management_api/models/actuate_trunk_request'
+require_relative 'tesla_fleet_management_api/models/add_charge_schedule_request'
+require_relative 'tesla_fleet_management_api/models/' \
+                 'add_precondition_schedule_request'
+require_relative 'tesla_fleet_management_api/models/adjust_volume_request'
+require_relative 'tesla_fleet_management_api/models/command_response'
+require_relative 'tesla_fleet_management_api/models/o_auth_token'
 require_relative 'tesla_fleet_management_api/models/default_real_mode'
 require_relative 'tesla_fleet_management_api/models/kind'
 require_relative 'tesla_fleet_management_api/models/' \
                  'kind_get_wall_connector_charging_history'
-require_relative 'tesla_fleet_management_api/models/oauth_provider_error'
+require_relative 'tesla_fleet_management_api/models/which_trunk'
+require_relative 'tesla_fleet_management_api/models/o_auth_provider_error'
+require_relative 'tesla_fleet_management_api/models/o_auth_scope_oauth2'
 
 # Exceptions
 require_relative 'tesla_fleet_management_api/exceptions/api_exception'
 require_relative 'tesla_fleet_management_api/exceptions/' \
-                 'oauth_provider_exception'
+                 'o_auth_provider_exception'
 
 require_relative 'tesla_fleet_management_api/configuration'
 
@@ -150,4 +160,6 @@ require_relative 'tesla_fleet_management_api/controllers/partner_controller'
 require_relative 'tesla_fleet_management_api/controllers/user_controller'
 require_relative 'tesla_fleet_management_api/controllers/vehicles_controller'
 require_relative 'tesla_fleet_management_api/controllers/' \
-                 'oauth_authorization_controller'
+                 'vehicle_commands_controller'
+require_relative 'tesla_fleet_management_api/controllers/' \
+                 'o_auth_authorization_controller'

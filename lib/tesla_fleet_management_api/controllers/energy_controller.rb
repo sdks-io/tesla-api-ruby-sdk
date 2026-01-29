@@ -26,7 +26,7 @@ module TeslaFleetManagementApi
                                 .is_required(true))
                    .header_param(new_parameter('application/json', key: 'accept'))
                    .body_serializer(proc do |param| param.to_json unless param.nil? end)
-                   .auth(Single.new('bearerAuth')))
+                   .auth(And.new('bearerAuth', 'oauth2')))
         .response(new_response_handler
                     .deserializer(APIHelper.method(:custom_type_deserializer))
                     .deserialize_into(BackupResponse.method(:from_hash))
@@ -68,7 +68,7 @@ module TeslaFleetManagementApi
                    .query_param(new_parameter(period, key: 'period'))
                    .query_param(new_parameter(time_zone, key: 'time_zone'))
                    .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(Single.new('bearerAuth')))
+                   .auth(And.new('bearerAuth', 'oauth2')))
         .response(new_response_handler
                     .deserializer(APIHelper.method(:custom_type_deserializer))
                     .deserialize_into(CalendarHistoryResponse.method(:from_hash))
@@ -108,7 +108,7 @@ module TeslaFleetManagementApi
                                  .is_required(true))
                    .query_param(new_parameter(time_zone, key: 'time_zone'))
                    .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(Single.new('bearerAuth')))
+                   .auth(And.new('bearerAuth', 'oauth2')))
         .response(new_response_handler
                     .deserializer(APIHelper.method(:custom_type_deserializer))
                     .deserialize_into(ChargeHistoryResponse.method(:from_hash))
@@ -129,7 +129,7 @@ module TeslaFleetManagementApi
                                     .is_required(true)
                                     .should_encode(true))
                    .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(Single.new('bearerAuth')))
+                   .auth(And.new('bearerAuth', 'oauth2')))
         .response(new_response_handler
                     .deserializer(APIHelper.method(:custom_type_deserializer))
                     .deserialize_into(LiveStatusResponse.method(:from_hash))
@@ -157,7 +157,7 @@ module TeslaFleetManagementApi
                                 .is_required(true))
                    .header_param(new_parameter('application/json', key: 'accept'))
                    .body_serializer(proc do |param| param.to_json unless param.nil? end)
-                   .auth(Single.new('bearerAuth')))
+                   .auth(And.new('bearerAuth', 'oauth2')))
         .response(new_response_handler
                     .deserializer(APIHelper.method(:custom_type_deserializer))
                     .deserialize_into(GenericUpdateResponse.method(:from_hash))
@@ -183,7 +183,7 @@ module TeslaFleetManagementApi
                    .body_param(new_parameter(body))
                    .header_param(new_parameter('application/json', key: 'accept'))
                    .body_serializer(APIHelper.method(:json_serialize))
-                   .auth(Single.new('bearerAuth')))
+                   .auth(And.new('bearerAuth', 'oauth2')))
         .response(new_response_handler
                     .deserializer(APIHelper.method(:custom_type_deserializer))
                     .deserialize_into(GenericUpdateResponse.method(:from_hash))
@@ -211,7 +211,7 @@ module TeslaFleetManagementApi
                                 .is_required(true))
                    .header_param(new_parameter('application/json', key: 'accept'))
                    .body_serializer(proc do |param| param.to_json unless param.nil? end)
-                   .auth(Single.new('bearerAuth')))
+                   .auth(And.new('bearerAuth', 'oauth2')))
         .response(new_response_handler
                     .deserializer(APIHelper.method(:custom_type_deserializer))
                     .deserialize_into(GenericUpdateResponse.method(:from_hash))
@@ -239,7 +239,7 @@ module TeslaFleetManagementApi
                                 .is_required(true))
                    .header_param(new_parameter('application/json', key: 'accept'))
                    .body_serializer(proc do |param| param.to_json unless param.nil? end)
-                   .auth(Single.new('bearerAuth')))
+                   .auth(And.new('bearerAuth', 'oauth2')))
         .response(new_response_handler
                     .deserializer(APIHelper.method(:custom_type_deserializer))
                     .deserialize_into(GenericUpdateResponse.method(:from_hash))
@@ -267,7 +267,7 @@ module TeslaFleetManagementApi
                                 .is_required(true))
                    .header_param(new_parameter('application/json', key: 'accept'))
                    .body_serializer(proc do |param| param.to_json unless param.nil? end)
-                   .auth(Single.new('bearerAuth')))
+                   .auth(And.new('bearerAuth', 'oauth2')))
         .response(new_response_handler
                     .deserializer(APIHelper.method(:custom_type_deserializer))
                     .deserialize_into(GenericUpdateResponse.method(:from_hash))
@@ -283,7 +283,7 @@ module TeslaFleetManagementApi
                                      '/api/1/products',
                                      Server::DEFAULT)
                    .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(Single.new('bearerAuth')))
+                   .auth(And.new('bearerAuth', 'oauth2')))
         .response(new_response_handler
                     .deserializer(APIHelper.method(:custom_type_deserializer))
                     .deserialize_into(ProductsResponse.method(:from_hash))
@@ -304,7 +304,7 @@ module TeslaFleetManagementApi
                                     .is_required(true)
                                     .should_encode(true))
                    .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(Single.new('bearerAuth')))
+                   .auth(And.new('bearerAuth', 'oauth2')))
         .response(new_response_handler
                     .deserializer(APIHelper.method(:custom_type_deserializer))
                     .deserialize_into(SiteInfoResponse.method(:from_hash))

@@ -4,317 +4,23 @@
 # APIMATIC v3.0 ( https://www.apimatic.io ).
 
 module TeslaFleetManagementApi
-  # VehiclesController
-  class VehiclesController < BaseController
-    # TODO: type endpoint description here
-    # @return [ApiResponse] Complete http response with raw body and status code.
-    def list_vehicles
-      @api_call
-        .request(new_request_builder(HttpMethodEnum::GET,
-                                     '/api/1/vehicles',
-                                     Server::DEFAULT)
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(And.new('bearerAuth', 'oauth2')))
-        .response(new_response_handler
-                    .deserializer(APIHelper.method(:custom_type_deserializer))
-                    .deserialize_into(Api1VehiclesResponse.method(:from_hash))
-                    .is_api_response(true))
-        .execute
-    end
-
-    # TODO: type endpoint description here
+  # VehicleCommandsController
+  class VehicleCommandsController < BaseController
+    # Controls the front or rear trunk
     # @param [String] vehicle_tag Required parameter: TODO: type description
     # here
-    # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_vehicle(vehicle_tag)
-      @api_call
-        .request(new_request_builder(HttpMethodEnum::GET,
-                                     '/api/1/vehicles/{vehicle_tag}',
-                                     Server::DEFAULT)
-                   .template_param(new_parameter(vehicle_tag, key: 'vehicle_tag')
-                                    .is_required(true)
-                                    .should_encode(true))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(And.new('bearerAuth', 'oauth2')))
-        .response(new_response_handler
-                    .deserializer(APIHelper.method(:custom_type_deserializer))
-                    .deserialize_into(Api1VehiclesResponseGetVehicle.method(:from_hash))
-                    .is_api_response(true))
-        .execute
-    end
-
-    # TODO: type endpoint description here
-    # @param [String] vehicle_tag Required parameter: TODO: type description
-    # here
-    # @return [ApiResponse] Complete http response with raw body and status code.
-    def mobile_enabled(vehicle_tag)
-      @api_call
-        .request(new_request_builder(HttpMethodEnum::GET,
-                                     '/api/1/vehicles/{vehicle_tag}/mobile_enabled',
-                                     Server::DEFAULT)
-                   .template_param(new_parameter(vehicle_tag, key: 'vehicle_tag')
-                                    .is_required(true)
-                                    .should_encode(true))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(And.new('bearerAuth', 'oauth2')))
-        .response(new_response_handler
-                    .deserializer(APIHelper.method(:custom_type_deserializer))
-                    .deserialize_into(Api1VehiclesMobileEnabledResponse.method(:from_hash))
-                    .is_api_response(true))
-        .execute
-    end
-
-    # TODO: type endpoint description here
-    # @param [String] vehicle_tag Required parameter: TODO: type description
-    # here
-    # @return [ApiResponse] Complete http response with raw body and status code.
-    def nearby_charging_sites(vehicle_tag)
-      @api_call
-        .request(new_request_builder(HttpMethodEnum::GET,
-                                     '/api/1/vehicles/{vehicle_tag}/nearby_charging_sites',
-                                     Server::DEFAULT)
-                   .template_param(new_parameter(vehicle_tag, key: 'vehicle_tag')
-                                    .is_required(true)
-                                    .should_encode(true))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(And.new('bearerAuth', 'oauth2')))
-        .response(new_response_handler
-                    .deserializer(APIHelper.method(:custom_type_deserializer))
-                    .deserialize_into(Api1VehiclesNearbyChargingSitesResponse.method(:from_hash))
-                    .is_api_response(true))
-        .execute
-    end
-
-    # TODO: type endpoint description here
-    # @param [String] vehicle_tag Required parameter: TODO: type description
-    # here
-    # @return [ApiResponse] Complete http response with raw body and status code.
-    def vehicle_live_data(vehicle_tag)
-      @api_call
-        .request(new_request_builder(HttpMethodEnum::GET,
-                                     '/api/1/vehicles/{vehicle_tag}/vehicle_data',
-                                     Server::DEFAULT)
-                   .template_param(new_parameter(vehicle_tag, key: 'vehicle_tag')
-                                    .is_required(true)
-                                    .should_encode(true))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(And.new('bearerAuth', 'oauth2')))
-        .response(new_response_handler
-                    .deserializer(APIHelper.method(:custom_type_deserializer))
-                    .deserialize_into(SiteInfoResponse.method(:from_hash))
-                    .is_api_response(true))
-        .execute
-    end
-
-    # TODO: type endpoint description here
-    # @param [String] vehicle_tag Required parameter: TODO: type description
-    # here
-    # @return [ApiResponse] Complete http response with raw body and status code.
-    def wake_up_vehicle(vehicle_tag)
-      @api_call
-        .request(new_request_builder(HttpMethodEnum::POST,
-                                     '/api/1/vehicles/{vehicle_tag}/wake_up',
-                                     Server::DEFAULT)
-                   .template_param(new_parameter(vehicle_tag, key: 'vehicle_tag')
-                                    .is_required(true)
-                                    .should_encode(true))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(And.new('bearerAuth', 'oauth2')))
-        .response(new_response_handler
-                    .deserializer(APIHelper.method(:custom_type_deserializer))
-                    .deserialize_into(Api1VehiclesWakeUpResponse.method(:from_hash))
-                    .is_api_response(true))
-        .execute
-    end
-
-    # TODO: type endpoint description here
-    # @param [String] vin Required parameter: TODO: type description here
-    # @return [ApiResponse] Complete http response with raw body and status code.
-    def vehicle_specs(vin)
-      @api_call
-        .request(new_request_builder(HttpMethodEnum::GET,
-                                     '/api/1/vehicles/{vin}/specs',
-                                     Server::DEFAULT)
-                   .template_param(new_parameter(vin, key: 'vin')
-                                    .is_required(true)
-                                    .should_encode(true))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(And.new('bearerAuth', 'oauth2')))
-        .response(new_response_handler
-                    .deserializer(APIHelper.method(:custom_type_deserializer))
-                    .deserialize_into(SiteInfoResponse.method(:from_hash))
-                    .is_api_response(true))
-        .execute
-    end
-
-    # TODO: type endpoint description here
-    # @param [String] vin Required parameter: TODO: type description here
-    # @return [ApiResponse] Complete http response with raw body and status code.
-    def vehicle_options(vin)
-      @api_call
-        .request(new_request_builder(HttpMethodEnum::GET,
-                                     '/api/1/dx/vehicles/options',
-                                     Server::DEFAULT)
-                   .query_param(new_parameter(vin, key: 'vin')
-                                 .is_required(true))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(And.new('bearerAuth', 'oauth2')))
-        .response(new_response_handler
-                    .deserializer(APIHelper.method(:custom_type_deserializer))
-                    .deserialize_into(Api1DxVehiclesOptionsResponse.method(:from_hash))
-                    .is_api_response(true))
-        .execute
-    end
-
-    # TODO: type endpoint description here
-    # @return [ApiResponse] Complete http response with raw body and status code.
-    def warranty_details
-      @api_call
-        .request(new_request_builder(HttpMethodEnum::GET,
-                                     '/api/1/dx/warranty/details',
-                                     Server::DEFAULT)
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(And.new('bearerAuth', 'oauth2')))
-        .response(new_response_handler
-                    .deserializer(APIHelper.method(:custom_type_deserializer))
-                    .deserialize_into(Api1DxWarrantyDetailsResponse.method(:from_hash))
-                    .is_api_response(true))
-        .execute
-    end
-
-    # TODO: type endpoint description here
-    # @param [String] vehicle_tag Required parameter: TODO: type description
-    # here
-    # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_allowed_drivers_for_a_vehicle(vehicle_tag)
-      @api_call
-        .request(new_request_builder(HttpMethodEnum::GET,
-                                     '/api/1/vehicles/{vehicle_tag}/drivers',
-                                     Server::DEFAULT)
-                   .template_param(new_parameter(vehicle_tag, key: 'vehicle_tag')
-                                    .is_required(true)
-                                    .should_encode(true))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(And.new('bearerAuth', 'oauth2')))
-        .response(new_response_handler
-                    .deserializer(APIHelper.method(:custom_type_deserializer))
-                    .deserialize_into(DriversResponse.method(:from_hash))
-                    .is_api_response(true))
-        .execute
-    end
-
-    # TODO: type endpoint description here
-    # @param [String] vehicle_tag Required parameter: TODO: type description
-    # here
-    # @return [ApiResponse] Complete http response with raw body and status code.
-    def remove_driver_access_from_a_vehicle(vehicle_tag)
-      @api_call
-        .request(new_request_builder(HttpMethodEnum::DELETE,
-                                     '/api/1/vehicles/{vehicle_tag}/drivers',
-                                     Server::DEFAULT)
-                   .template_param(new_parameter(vehicle_tag, key: 'vehicle_tag')
-                                    .is_required(true)
-                                    .should_encode(true))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(And.new('bearerAuth', 'oauth2')))
-        .response(new_response_handler
-                    .deserializer(APIHelper.method(:custom_type_deserializer))
-                    .deserialize_into(SimpleOkResponse.method(:from_hash))
-                    .is_api_response(true))
-        .execute
-    end
-
-    # TODO: type endpoint description here
-    # @param [String] vin Required parameter: TODO: type description here
-    # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_eligible_vehicle_subscriptions(vin)
-      @api_call
-        .request(new_request_builder(HttpMethodEnum::GET,
-                                     '/api/1/dx/vehicles/subscriptions/eligibility',
-                                     Server::DEFAULT)
-                   .query_param(new_parameter(vin, key: 'vin')
-                                 .is_required(true))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(And.new('bearerAuth', 'oauth2')))
-        .response(new_response_handler
-                    .deserializer(APIHelper.method(:custom_type_deserializer))
-                    .deserialize_into(SiteInfoResponse.method(:from_hash))
-                    .is_api_response(true))
-        .execute
-    end
-
-    # TODO: type endpoint description here
-    # @param [String] vin Required parameter: TODO: type description here
-    # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_eligible_vehicle_upgrades(vin)
-      @api_call
-        .request(new_request_builder(HttpMethodEnum::GET,
-                                     '/api/1/dx/vehicles/upgrades/eligibility',
-                                     Server::DEFAULT)
-                   .query_param(new_parameter(vin, key: 'vin')
-                                 .is_required(true))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(And.new('bearerAuth', 'oauth2')))
-        .response(new_response_handler
-                    .deserializer(APIHelper.method(:custom_type_deserializer))
-                    .deserialize_into(SiteInfoResponse.method(:from_hash))
-                    .is_api_response(true))
-        .execute
-    end
-
-    # TODO: type endpoint description here
-    # @param [String] vin Required parameter: TODO: type description here
-    # @param [EnterprisePayerRequest] body Required parameter: TODO: type
+    # @param [ActuateTrunkRequest] body Required parameter: TODO: type
     # description here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def set_enterprise_payer_roles(vin,
-                                   body)
+    def actuate_trunk(vehicle_tag,
+                      body)
       @api_call
         .request(new_request_builder(HttpMethodEnum::POST,
-                                     '/api/1/dx/enterprise/v1/{vin}/payer',
+                                     '/api/1/vehicles/{vehicle_tag}/command/actuate_trunk',
                                      Server::DEFAULT)
-                   .template_param(new_parameter(vin, key: 'vin')
+                   .template_param(new_parameter(vehicle_tag, key: 'vehicle_tag')
                                     .is_required(true)
                                     .should_encode(true))
-                   .header_param(new_parameter('application/json', key: 'Content-Type'))
-                   .body_param(new_parameter(body)
-                                .is_required(true))
-                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
-                   .auth(And.new('bearerAuth', 'oauth2')))
-        .response(new_response_handler
-                    .is_response_void(true)
-                    .is_api_response(true))
-        .execute
-    end
-
-    # TODO: type endpoint description here
-    # @param [String] vin Required parameter: TODO: type description here
-    # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_enterprise_roles_for_a_vehicle(vin)
-      @api_call
-        .request(new_request_builder(HttpMethodEnum::GET,
-                                     '/api/1/dx/enterprise/v1/{vin}/roles',
-                                     Server::DEFAULT)
-                   .template_param(new_parameter(vin, key: 'vin')
-                                    .is_required(true)
-                                    .should_encode(true))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(And.new('bearerAuth', 'oauth2')))
-        .response(new_response_handler
-                    .deserializer(APIHelper.method(:json_deserialize))
-                    .is_api_response(true))
-        .execute
-    end
-
-    # TODO: type endpoint description here
-    # @param [FleetStatusRequest] body Required parameter: TODO: type
-    # description here
-    # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_fleet_status_for_vehicles(body)
-      @api_call
-        .request(new_request_builder(HttpMethodEnum::POST,
-                                     '/api/1/vehicles/fleet_status',
-                                     Server::DEFAULT)
                    .header_param(new_parameter('application/json', key: 'Content-Type'))
                    .body_param(new_parameter(body)
                                 .is_required(true))
@@ -322,27 +28,8 @@ module TeslaFleetManagementApi
                    .body_serializer(proc do |param| param.to_json unless param.nil? end)
                    .auth(And.new('bearerAuth', 'oauth2')))
         .response(new_response_handler
-                    .deserializer(APIHelper.method(:json_deserialize))
-                    .is_api_response(true))
-        .execute
-    end
-
-    # TODO: type endpoint description here
-    # @param [Object] body Required parameter: TODO: type description here
-    # @return [ApiResponse] Complete http response with raw body and status code.
-    def create_or_update_fleet_telemetry_configuration(body)
-      @api_call
-        .request(new_request_builder(HttpMethodEnum::POST,
-                                     '/api/1/vehicles/fleet_telemetry_config',
-                                     Server::DEFAULT)
-                   .header_param(new_parameter('application/json', key: 'Content-Type'))
-                   .body_param(new_parameter(body)
-                                .is_required(true))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .body_serializer(APIHelper.method(:json_serialize))
-                   .auth(And.new('bearerAuth', 'oauth2')))
-        .response(new_response_handler
-                    .deserializer(APIHelper.method(:json_deserialize))
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(CommandResponse.method(:from_hash))
                     .is_api_response(true))
         .execute
     end
@@ -350,52 +37,18 @@ module TeslaFleetManagementApi
     # TODO: type endpoint description here
     # @param [String] vehicle_tag Required parameter: TODO: type description
     # here
-    # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_fleet_telemetry_configuration(vehicle_tag)
-      @api_call
-        .request(new_request_builder(HttpMethodEnum::GET,
-                                     '/api/1/vehicles/{vehicle_tag}/fleet_telemetry_config',
-                                     Server::DEFAULT)
-                   .template_param(new_parameter(vehicle_tag, key: 'vehicle_tag')
-                                    .is_required(true)
-                                    .should_encode(true))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(And.new('bearerAuth', 'oauth2')))
-        .response(new_response_handler
-                    .deserializer(APIHelper.method(:json_deserialize))
-                    .is_api_response(true))
-        .execute
-    end
-
-    # TODO: type endpoint description here
-    # @param [String] vehicle_tag Required parameter: TODO: type description
-    # here
-    # @return [ApiResponse] Complete http response with raw body and status code.
-    def delete_fleet_telemetry_configuration(vehicle_tag)
-      @api_call
-        .request(new_request_builder(HttpMethodEnum::DELETE,
-                                     '/api/1/vehicles/{vehicle_tag}/fleet_telemetry_config',
-                                     Server::DEFAULT)
-                   .template_param(new_parameter(vehicle_tag, key: 'vehicle_tag')
-                                    .is_required(true)
-                                    .should_encode(true))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(And.new('bearerAuth', 'oauth2')))
-        .response(new_response_handler
-                    .deserializer(APIHelper.method(:json_deserialize))
-                    .is_api_response(true))
-        .execute
-    end
-
-    # TODO: type endpoint description here
-    # @param [FleetTelemetryJwsRequest] body Required parameter: TODO: type
+    # @param [AddChargeScheduleRequest] body Required parameter: TODO: type
     # description here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def configure_fleet_telemetry_using_signed_jws_token(body)
+    def add_charge_schedule(vehicle_tag,
+                            body)
       @api_call
         .request(new_request_builder(HttpMethodEnum::POST,
-                                     '/api/1/vehicles/fleet_telemetry_config_jws',
+                                     '/api/1/vehicles/{vehicle_tag}/command/add_charge_schedule',
                                      Server::DEFAULT)
+                   .template_param(new_parameter(vehicle_tag, key: 'vehicle_tag')
+                                    .is_required(true)
+                                    .should_encode(true))
                    .header_param(new_parameter('application/json', key: 'Content-Type'))
                    .body_param(new_parameter(body)
                                 .is_required(true))
@@ -403,7 +56,64 @@ module TeslaFleetManagementApi
                    .body_serializer(proc do |param| param.to_json unless param.nil? end)
                    .auth(And.new('bearerAuth', 'oauth2')))
         .response(new_response_handler
-                    .deserializer(APIHelper.method(:json_deserialize))
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(CommandResponse.method(:from_hash))
+                    .is_api_response(true))
+        .execute
+    end
+
+    # TODO: type endpoint description here
+    # @param [String] vehicle_tag Required parameter: TODO: type description
+    # here
+    # @param [AddPreconditionScheduleRequest] body Required parameter: TODO:
+    # type description here
+    # @return [ApiResponse] Complete http response with raw body and status code.
+    def add_precondition_schedule(vehicle_tag,
+                                  body)
+      @api_call
+        .request(new_request_builder(HttpMethodEnum::POST,
+                                     '/api/1/vehicles/{vehicle_tag}/command/add_precondition_schedule',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(vehicle_tag, key: 'vehicle_tag')
+                                    .is_required(true)
+                                    .should_encode(true))
+                   .header_param(new_parameter('application/json', key: 'Content-Type'))
+                   .body_param(new_parameter(body)
+                                .is_required(true))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
+                   .auth(And.new('bearerAuth', 'oauth2')))
+        .response(new_response_handler
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(CommandResponse.method(:from_hash))
+                    .is_api_response(true))
+        .execute
+    end
+
+    # TODO: type endpoint description here
+    # @param [String] vehicle_tag Required parameter: TODO: type description
+    # here
+    # @param [AdjustVolumeRequest] body Required parameter: TODO: type
+    # description here
+    # @return [ApiResponse] Complete http response with raw body and status code.
+    def adjust_media_volume(vehicle_tag,
+                            body)
+      @api_call
+        .request(new_request_builder(HttpMethodEnum::POST,
+                                     '/api/1/vehicles/{vehicle_tag}/command/adjust_volume',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(vehicle_tag, key: 'vehicle_tag')
+                                    .is_required(true)
+                                    .should_encode(true))
+                   .header_param(new_parameter('application/json', key: 'Content-Type'))
+                   .body_param(new_parameter(body)
+                                .is_required(true))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
+                   .auth(And.new('bearerAuth', 'oauth2')))
+        .response(new_response_handler
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(CommandResponse.method(:from_hash))
                     .is_api_response(true))
         .execute
     end
@@ -412,10 +122,10 @@ module TeslaFleetManagementApi
     # @param [String] vehicle_tag Required parameter: TODO: type description
     # here
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def get_fleet_telemetry_errors_for_a_vehicle(vehicle_tag)
+    def start_climate_preconditioning(vehicle_tag)
       @api_call
-        .request(new_request_builder(HttpMethodEnum::GET,
-                                     '/api/1/vehicles/{vehicle_tag}/fleet_telemetry_errors',
+        .request(new_request_builder(HttpMethodEnum::POST,
+                                     '/api/1/vehicles/{vehicle_tag}/command/auto_conditioning_start',
                                      Server::DEFAULT)
                    .template_param(new_parameter(vehicle_tag, key: 'vehicle_tag')
                                     .is_required(true)
@@ -423,7 +133,352 @@ module TeslaFleetManagementApi
                    .header_param(new_parameter('application/json', key: 'accept'))
                    .auth(And.new('bearerAuth', 'oauth2')))
         .response(new_response_handler
-                    .deserializer(APIHelper.method(:json_deserialize))
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(CommandResponse.method(:from_hash))
+                    .is_api_response(true))
+        .execute
+    end
+
+    # TODO: type endpoint description here
+    # @param [String] vehicle_tag Required parameter: TODO: type description
+    # here
+    # @return [ApiResponse] Complete http response with raw body and status code.
+    def stop_climate_preconditioning(vehicle_tag)
+      @api_call
+        .request(new_request_builder(HttpMethodEnum::POST,
+                                     '/api/1/vehicles/{vehicle_tag}/command/auto_conditioning_stop',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(vehicle_tag, key: 'vehicle_tag')
+                                    .is_required(true)
+                                    .should_encode(true))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .auth(And.new('bearerAuth', 'oauth2')))
+        .response(new_response_handler
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(CommandResponse.method(:from_hash))
+                    .is_api_response(true))
+        .execute
+    end
+
+    # TODO: type endpoint description here
+    # @param [String] vehicle_tag Required parameter: TODO: type description
+    # here
+    # @return [ApiResponse] Complete http response with raw body and status code.
+    def cancel_software_update(vehicle_tag)
+      @api_call
+        .request(new_request_builder(HttpMethodEnum::POST,
+                                     '/api/1/vehicles/{vehicle_tag}/command/cancel_software_update',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(vehicle_tag, key: 'vehicle_tag')
+                                    .is_required(true)
+                                    .should_encode(true))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .auth(And.new('bearerAuth', 'oauth2')))
+        .response(new_response_handler
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(CommandResponse.method(:from_hash))
+                    .is_api_response(true))
+        .execute
+    end
+
+    # TODO: type endpoint description here
+    # @param [String] vehicle_tag Required parameter: TODO: type description
+    # here
+    # @return [ApiResponse] Complete http response with raw body and status code.
+    def charge_max_range(vehicle_tag)
+      @api_call
+        .request(new_request_builder(HttpMethodEnum::POST,
+                                     '/api/1/vehicles/{vehicle_tag}/command/charge_max_range',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(vehicle_tag, key: 'vehicle_tag')
+                                    .is_required(true)
+                                    .should_encode(true))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .auth(And.new('bearerAuth', 'oauth2')))
+        .response(new_response_handler
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(CommandResponse.method(:from_hash))
+                    .is_api_response(true))
+        .execute
+    end
+
+    # TODO: type endpoint description here
+    # @param [String] vehicle_tag Required parameter: TODO: type description
+    # here
+    # @return [ApiResponse] Complete http response with raw body and status code.
+    def open_charge_port_door(vehicle_tag)
+      @api_call
+        .request(new_request_builder(HttpMethodEnum::POST,
+                                     '/api/1/vehicles/{vehicle_tag}/command/charge_port_door_open',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(vehicle_tag, key: 'vehicle_tag')
+                                    .is_required(true)
+                                    .should_encode(true))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .auth(And.new('bearerAuth', 'oauth2')))
+        .response(new_response_handler
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(CommandResponse.method(:from_hash))
+                    .is_api_response(true))
+        .execute
+    end
+
+    # TODO: type endpoint description here
+    # @param [String] vehicle_tag Required parameter: TODO: type description
+    # here
+    # @return [ApiResponse] Complete http response with raw body and status code.
+    def close_charge_port_door(vehicle_tag)
+      @api_call
+        .request(new_request_builder(HttpMethodEnum::POST,
+                                     '/api/1/vehicles/{vehicle_tag}/command/charge_port_door_close',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(vehicle_tag, key: 'vehicle_tag')
+                                    .is_required(true)
+                                    .should_encode(true))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .auth(And.new('bearerAuth', 'oauth2')))
+        .response(new_response_handler
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(CommandResponse.method(:from_hash))
+                    .is_api_response(true))
+        .execute
+    end
+
+    # TODO: type endpoint description here
+    # @param [String] vehicle_tag Required parameter: TODO: type description
+    # here
+    # @return [ApiResponse] Complete http response with raw body and status code.
+    def charge_standard(vehicle_tag)
+      @api_call
+        .request(new_request_builder(HttpMethodEnum::POST,
+                                     '/api/1/vehicles/{vehicle_tag}/command/charge_standard',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(vehicle_tag, key: 'vehicle_tag')
+                                    .is_required(true)
+                                    .should_encode(true))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .auth(And.new('bearerAuth', 'oauth2')))
+        .response(new_response_handler
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(CommandResponse.method(:from_hash))
+                    .is_api_response(true))
+        .execute
+    end
+
+    # TODO: type endpoint description here
+    # @param [String] vehicle_tag Required parameter: TODO: type description
+    # here
+    # @return [ApiResponse] Complete http response with raw body and status code.
+    def start_charging(vehicle_tag)
+      @api_call
+        .request(new_request_builder(HttpMethodEnum::POST,
+                                     '/api/1/vehicles/{vehicle_tag}/command/charge_start',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(vehicle_tag, key: 'vehicle_tag')
+                                    .is_required(true)
+                                    .should_encode(true))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .auth(And.new('bearerAuth', 'oauth2')))
+        .response(new_response_handler
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(CommandResponse.method(:from_hash))
+                    .is_api_response(true))
+        .execute
+    end
+
+    # TODO: type endpoint description here
+    # @param [String] vehicle_tag Required parameter: TODO: type description
+    # here
+    # @return [ApiResponse] Complete http response with raw body and status code.
+    def stop_charging(vehicle_tag)
+      @api_call
+        .request(new_request_builder(HttpMethodEnum::POST,
+                                     '/api/1/vehicles/{vehicle_tag}/command/charge_stop',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(vehicle_tag, key: 'vehicle_tag')
+                                    .is_required(true)
+                                    .should_encode(true))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .auth(And.new('bearerAuth', 'oauth2')))
+        .response(new_response_handler
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(CommandResponse.method(:from_hash))
+                    .is_api_response(true))
+        .execute
+    end
+
+    # Deactivates PIN to Drive and resets the associated PIN for supported
+    # firmware versions.
+    # @param [String] vehicle_tag Required parameter: TODO: type description
+    # here
+    # @return [ApiResponse] Complete http response with raw body and status code.
+    def clear_pin_to_drive_admin(vehicle_tag)
+      @api_call
+        .request(new_request_builder(HttpMethodEnum::POST,
+                                     '/api/1/vehicles/{vehicle_tag}/command/clear_pin_to_drive_admin',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(vehicle_tag, key: 'vehicle_tag')
+                                    .is_required(true)
+                                    .should_encode(true))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .auth(And.new('bearerAuth', 'oauth2')))
+        .response(new_response_handler
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(CommandResponse.method(:from_hash))
+                    .is_api_response(true))
+        .execute
+    end
+
+    # TODO: type endpoint description here
+    # @param [String] vehicle_tag Required parameter: TODO: type description
+    # here
+    # @return [ApiResponse] Complete http response with raw body and status code.
+    def lock_doors(vehicle_tag)
+      @api_call
+        .request(new_request_builder(HttpMethodEnum::POST,
+                                     '/api/1/vehicles/{vehicle_tag}/command/door_lock',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(vehicle_tag, key: 'vehicle_tag')
+                                    .is_required(true)
+                                    .should_encode(true))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .auth(And.new('bearerAuth', 'oauth2')))
+        .response(new_response_handler
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(CommandResponse.method(:from_hash))
+                    .is_api_response(true))
+        .execute
+    end
+
+    # TODO: type endpoint description here
+    # @param [String] vehicle_tag Required parameter: TODO: type description
+    # here
+    # @return [ApiResponse] Complete http response with raw body and status code.
+    def unlock_doors(vehicle_tag)
+      @api_call
+        .request(new_request_builder(HttpMethodEnum::POST,
+                                     '/api/1/vehicles/{vehicle_tag}/command/door_unlock',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(vehicle_tag, key: 'vehicle_tag')
+                                    .is_required(true)
+                                    .should_encode(true))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .auth(And.new('bearerAuth', 'oauth2')))
+        .response(new_response_handler
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(CommandResponse.method(:from_hash))
+                    .is_api_response(true))
+        .execute
+    end
+
+    # Erases user data from the vehicle UI. Requires Guest Mode.
+    # @param [String] vehicle_tag Required parameter: TODO: type description
+    # here
+    # @return [ApiResponse] Complete http response with raw body and status code.
+    def erase_user_data(vehicle_tag)
+      @api_call
+        .request(new_request_builder(HttpMethodEnum::POST,
+                                     '/api/1/vehicles/{vehicle_tag}/command/erase_user_data',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(vehicle_tag, key: 'vehicle_tag')
+                                    .is_required(true)
+                                    .should_encode(true))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .auth(And.new('bearerAuth', 'oauth2')))
+        .response(new_response_handler
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(CommandResponse.method(:from_hash))
+                    .is_api_response(true))
+        .execute
+    end
+
+    # Briefly flashes vehicle headlights.
+    # @param [String] vehicle_tag Required parameter: TODO: type description
+    # here
+    # @return [ApiResponse] Complete http response with raw body and status code.
+    def flash_lights(vehicle_tag)
+      @api_call
+        .request(new_request_builder(HttpMethodEnum::POST,
+                                     '/api/1/vehicles/{vehicle_tag}/command/flash_lights',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(vehicle_tag, key: 'vehicle_tag')
+                                    .is_required(true)
+                                    .should_encode(true))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .auth(And.new('bearerAuth', 'oauth2')))
+        .response(new_response_handler
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(CommandResponse.method(:from_hash))
+                    .is_api_response(true))
+        .execute
+    end
+
+    # TODO: type endpoint description here
+    # @param [String] vehicle_tag Required parameter: TODO: type description
+    # here
+    # @param [GuestModeRequest] body Required parameter: TODO: type description
+    # here
+    # @return [ApiResponse] Complete http response with raw body and status code.
+    def enable_or_disable_guest_mode(vehicle_tag,
+                                     body)
+      @api_call
+        .request(new_request_builder(HttpMethodEnum::POST,
+                                     '/api/1/vehicles/{vehicle_tag}/command/guest_mode',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(vehicle_tag, key: 'vehicle_tag')
+                                    .is_required(true)
+                                    .should_encode(true))
+                   .header_param(new_parameter('application/json', key: 'Content-Type'))
+                   .body_param(new_parameter(body)
+                                .is_required(true))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
+                   .auth(And.new('bearerAuth', 'oauth2')))
+        .response(new_response_handler
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(CommandResponse.method(:from_hash))
+                    .is_api_response(true))
+        .execute
+    end
+
+    # TODO: type endpoint description here
+    # @param [String] vehicle_tag Required parameter: TODO: type description
+    # here
+    # @return [ApiResponse] Complete http response with raw body and status code.
+    def honk_horn(vehicle_tag)
+      @api_call
+        .request(new_request_builder(HttpMethodEnum::POST,
+                                     '/api/1/vehicles/{vehicle_tag}/command/honk_horn',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(vehicle_tag, key: 'vehicle_tag')
+                                    .is_required(true)
+                                    .should_encode(true))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .auth(And.new('bearerAuth', 'oauth2')))
+        .response(new_response_handler
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(CommandResponse.method(:from_hash))
+                    .is_api_response(true))
+        .execute
+    end
+
+    # TODO: type endpoint description here
+    # @param [String] vehicle_tag Required parameter: TODO: type description
+    # here
+    # @return [ApiResponse] Complete http response with raw body and status code.
+    def next_favorite_media_track(vehicle_tag)
+      @api_call
+        .request(new_request_builder(HttpMethodEnum::POST,
+                                     '/api/1/vehicles/{vehicle_tag}/command/media_next_fav',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(vehicle_tag, key: 'vehicle_tag')
+                                    .is_required(true)
+                                    .should_encode(true))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .auth(And.new('bearerAuth', 'oauth2')))
+        .response(new_response_handler
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(CommandResponse.method(:from_hash))
                     .is_api_response(true))
         .execute
     end

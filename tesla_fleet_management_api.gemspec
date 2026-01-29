@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'tesla-api-sdk'
-  s.version = '1.0.0'
+  s.version = '1.0.1'
   s.summary = 'Tesla API SDKs'
   s.description = 'Tesla-API SDK'
   s.authors = ['Muhammad Rafay']

@@ -12,17 +12,23 @@ partner_controller = client.partner
 
 ## Methods
 
-* [Get VINs With Fleet Telemetry Errors](../../doc/controllers/partner.md#get-vins-with-fleet-telemetry-errors)
+* [Get Vins With Fleet Telemetry Errors](../../doc/controllers/partner.md#get-vins-with-fleet-telemetry-errors)
 * [Get Recent Fleet Telemetry Errors](../../doc/controllers/partner.md#get-recent-fleet-telemetry-errors)
 * [Get Public Key for a Domain](../../doc/controllers/partner.md#get-public-key-for-a-domain)
 * [Register a Partner Account](../../doc/controllers/partner.md#register-a-partner-account)
 
 
-# Get VINs With Fleet Telemetry Errors
+# Get Vins With Fleet Telemetry Errors
 
 ```ruby
 def get_vins_with_fleet_telemetry_errors
 ```
+
+## Requires scope
+
+### oauth2
+
+`energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
 ## Response Type
 
@@ -46,6 +52,12 @@ end
 ```ruby
 def get_recent_fleet_telemetry_errors
 ```
+
+## Requires scope
+
+### oauth2
+
+`energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
 ## Response Type
 
@@ -75,6 +87,12 @@ def get_public_key_for_a_domain(domain)
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `domain` | `String` | Query, Required | - |
+
+## Requires scope
+
+### oauth2
+
+`energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
 ## Response Type
 
@@ -106,6 +124,12 @@ def register_a_partner_account(body)
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `body` | [`RegisterPartnerRequest`](../../doc/models/register-partner-request.md) | Body, Required | - |
+
+## Requires scope
+
+### oauth2
+
+`energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
 ## Response Type
 

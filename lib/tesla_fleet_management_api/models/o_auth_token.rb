@@ -5,7 +5,7 @@
 
 module TeslaFleetManagementApi
   # OAuth 2 Authorization endpoint response
-  class OauthToken < BaseModel
+  class OAuthToken < BaseModel
     SKIP = Object.new
     private_constant :SKIP
 
@@ -85,7 +85,7 @@ module TeslaFleetManagementApi
       refresh_token = hash.key?('refresh_token') ? hash['refresh_token'] : SKIP
 
       # Create object from extracted values.
-      OauthToken.new(access_token: access_token,
+      OAuthToken.new(access_token: access_token,
                      token_type: token_type,
                      expires_in: expires_in,
                      scope: scope,

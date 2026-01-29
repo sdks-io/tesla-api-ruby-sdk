@@ -4,8 +4,8 @@
 # APIMATIC v3.0 ( https://www.apimatic.io ).
 
 module TeslaFleetManagementApi
-  # OauthAuthorizationController
-  class OauthAuthorizationController < BaseController
+  # OAuthAuthorizationController
+  class OAuthAuthorizationController < BaseController
     # Create a new OAuth 2 token.
     # @param [String] authorization Required parameter: Authorization header in
     # Basic auth format
@@ -14,10 +14,10 @@ module TeslaFleetManagementApi
     # @param [Hash] _field_parameters Additional optional form parameters are
     # supported by this endpoint.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def request_token_oauth_2(authorization,
-                              code,
-                              redirect_uri,
-                              _field_parameters: nil)
+    def request_token_oauth2(authorization,
+                             code,
+                             redirect_uri,
+                             _field_parameters: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/token',
@@ -34,14 +34,14 @@ module TeslaFleetManagementApi
                    .additional_form_params(_field_parameters))
         .response(new_response_handler
                     .deserializer(APIHelper.method(:custom_type_deserializer))
-                    .deserialize_into(OauthToken.method(:from_hash))
+                    .deserialize_into(OAuthToken.method(:from_hash))
                     .is_api_response(true)
                     .local_error('400',
                                  'OAuth 2 provider returned an error.',
-                                 OauthProviderException)
+                                 OAuthProviderException)
                     .local_error('401',
                                  'OAuth 2 provider says client authentication failed.',
-                                 OauthProviderException))
+                                 OAuthProviderException))
         .execute
     end
 
@@ -54,10 +54,10 @@ module TeslaFleetManagementApi
     # @param [Hash] _field_parameters Additional optional form parameters are
     # supported by this endpoint.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def refresh_token_oauth_2(authorization,
-                              refresh_token,
-                              scope: nil,
-                              _field_parameters: nil)
+    def refresh_token_oauth2(authorization,
+                             refresh_token,
+                             scope: nil,
+                             _field_parameters: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/token',
@@ -73,14 +73,14 @@ module TeslaFleetManagementApi
                    .additional_form_params(_field_parameters))
         .response(new_response_handler
                     .deserializer(APIHelper.method(:custom_type_deserializer))
-                    .deserialize_into(OauthToken.method(:from_hash))
+                    .deserialize_into(OAuthToken.method(:from_hash))
                     .is_api_response(true)
                     .local_error('400',
                                  'OAuth 2 provider returned an error.',
-                                 OauthProviderException)
+                                 OAuthProviderException)
                     .local_error('401',
                                  'OAuth 2 provider says client authentication failed.',
-                                 OauthProviderException))
+                                 OAuthProviderException))
         .execute
     end
   end

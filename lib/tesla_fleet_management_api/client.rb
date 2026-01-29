@@ -14,7 +14,7 @@ module TeslaFleetManagementApi
     end
 
     # Returns the configured authentication oauth2 instance.
-    def oauth_2
+    def oauth2
       @auth_managers['oauth2']
     end
 
@@ -48,10 +48,16 @@ module TeslaFleetManagementApi
       @vehicles ||= VehiclesController.new @global_configuration
     end
 
-    # Access to oauth_authorization controller.
-    # @return [OauthAuthorizationController] Returns the controller instance.
-    def oauth_authorization
-      @oauth_authorization ||= OauthAuthorizationController.new @global_configuration
+    # Access to vehicle_commands controller.
+    # @return [VehicleCommandsController] Returns the controller instance.
+    def vehicle_commands
+      @vehicle_commands ||= VehicleCommandsController.new @global_configuration
+    end
+
+    # Access to o_auth_authorization controller.
+    # @return [OAuthAuthorizationController] Returns the controller instance.
+    def o_auth_authorization
+      @o_auth_authorization ||= OAuthAuthorizationController.new @global_configuration
     end
 
     def initialize(
@@ -60,7 +66,7 @@ module TeslaFleetManagementApi
       retry_statuses: [408, 413, 429, 500, 502, 503, 504, 521, 522, 524],
       retry_methods: %i[get put], http_callback: nil, proxy_settings: nil,
       logging_configuration: nil, environment: Environment::PRODUCTION,
-      bearer_auth_credentials: nil, oauth_2_credentials: nil, config: nil
+      bearer_auth_credentials: nil, oauth2_credentials: nil, config: nil
     )
       @config = if config.nil?
                   Configuration.new(
@@ -73,7 +79,7 @@ module TeslaFleetManagementApi
                     logging_configuration: logging_configuration,
                     environment: environment,
                     bearer_auth_credentials: bearer_auth_credentials,
-                    oauth_2_credentials: oauth_2_credentials
+                    oauth2_credentials: oauth2_credentials
                   )
                 else
                   config
@@ -97,7 +103,7 @@ module TeslaFleetManagementApi
       http_client_config = global_config.client_configuration
       %w[bearerAuth oauth2].each { |auth| @auth_managers[auth] = nil }
       @auth_managers['bearerAuth'] = BearerAuth.new(http_client_config.bearer_auth_credentials)
-      @auth_managers['oauth2'] = Oauth2.new(http_client_config.oauth_2_credentials, global_config)
+      @auth_managers['oauth2'] = Oauth2.new(http_client_config.oauth2_credentials, global_config)
     end
 
     # Creates a client directly from environment variables.

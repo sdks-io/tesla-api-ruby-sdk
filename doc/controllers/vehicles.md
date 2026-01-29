@@ -29,7 +29,7 @@ vehicles_controller = client.vehicles
 * [Create or Update Fleet Telemetry Configuration](../../doc/controllers/vehicles.md#create-or-update-fleet-telemetry-configuration)
 * [Get Fleet Telemetry Configuration](../../doc/controllers/vehicles.md#get-fleet-telemetry-configuration)
 * [Delete Fleet Telemetry Configuration](../../doc/controllers/vehicles.md#delete-fleet-telemetry-configuration)
-* [Configure Fleet Telemetry Using Signed JWS Token](../../doc/controllers/vehicles.md#configure-fleet-telemetry-using-signed-jws-token)
+* [Configure Fleet Telemetry Using Signed Jws Token](../../doc/controllers/vehicles.md#configure-fleet-telemetry-using-signed-jws-token)
 * [Get Fleet Telemetry Errors for a Vehicle](../../doc/controllers/vehicles.md#get-fleet-telemetry-errors-for-a-vehicle)
 
 
@@ -38,6 +38,12 @@ vehicles_controller = client.vehicles
 ```ruby
 def list_vehicles
 ```
+
+## Requires scope
+
+### oauth2
+
+`energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
 ## Response Type
 
@@ -67,6 +73,12 @@ def get_vehicle(vehicle_tag)
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `vehicle_tag` | `String` | Template, Required | - |
+
+## Requires scope
+
+### oauth2
+
+`energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
 ## Response Type
 
@@ -99,6 +111,12 @@ def mobile_enabled(vehicle_tag)
 |  --- | --- | --- | --- |
 | `vehicle_tag` | `String` | Template, Required | - |
 
+## Requires scope
+
+### oauth2
+
+`energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
+
 ## Response Type
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `data` property of this instance returns the response data which is of type [`Api1VehiclesMobileEnabledResponse`](../../doc/models/api-1-vehicles-mobile-enabled-response.md).
@@ -129,6 +147,12 @@ def nearby_charging_sites(vehicle_tag)
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `vehicle_tag` | `String` | Template, Required | - |
+
+## Requires scope
+
+### oauth2
+
+`energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
 ## Response Type
 
@@ -161,6 +185,12 @@ def vehicle_live_data(vehicle_tag)
 |  --- | --- | --- | --- |
 | `vehicle_tag` | `String` | Template, Required | - |
 
+## Requires scope
+
+### oauth2
+
+`energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
+
 ## Response Type
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `data` property of this instance returns the response data which is of type [`SiteInfoResponse`](../../doc/models/site-info-response.md).
@@ -191,6 +221,12 @@ def wake_up_vehicle(vehicle_tag)
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `vehicle_tag` | `String` | Template, Required | - |
+
+## Requires scope
+
+### oauth2
+
+`energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
 ## Response Type
 
@@ -223,6 +259,12 @@ def vehicle_specs(vin)
 |  --- | --- | --- | --- |
 | `vin` | `String` | Template, Required | - |
 
+## Requires scope
+
+### oauth2
+
+`energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
+
 ## Response Type
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `data` property of this instance returns the response data which is of type [`SiteInfoResponse`](../../doc/models/site-info-response.md).
@@ -254,6 +296,12 @@ def vehicle_options(vin)
 |  --- | --- | --- | --- |
 | `vin` | `String` | Query, Required | - |
 
+## Requires scope
+
+### oauth2
+
+`energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
+
 ## Response Type
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `data` property of this instance returns the response data which is of type [`Api1DxVehiclesOptionsResponse`](../../doc/models/api-1-dx-vehicles-options-response.md).
@@ -278,6 +326,12 @@ end
 ```ruby
 def warranty_details
 ```
+
+## Requires scope
+
+### oauth2
+
+`energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
 ## Response Type
 
@@ -307,6 +361,12 @@ def get_allowed_drivers_for_a_vehicle(vehicle_tag)
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `vehicle_tag` | `String` | Template, Required | - |
+
+## Requires scope
+
+### oauth2
+
+`energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
 ## Response Type
 
@@ -339,6 +399,12 @@ def remove_driver_access_from_a_vehicle(vehicle_tag)
 |  --- | --- | --- | --- |
 | `vehicle_tag` | `String` | Template, Required | - |
 
+## Requires scope
+
+### oauth2
+
+`energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
+
 ## Response Type
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `data` property of this instance returns the response data which is of type [`SimpleOkResponse`](../../doc/models/simple-ok-response.md).
@@ -370,6 +436,12 @@ def get_eligible_vehicle_subscriptions(vin)
 |  --- | --- | --- | --- |
 | `vin` | `String` | Query, Required | - |
 
+## Requires scope
+
+### oauth2
+
+`energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
+
 ## Response Type
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `data` property of this instance returns the response data which is of type [`SiteInfoResponse`](../../doc/models/site-info-response.md).
@@ -400,6 +472,12 @@ def get_eligible_vehicle_upgrades(vin)
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `vin` | `String` | Query, Required | - |
+
+## Requires scope
+
+### oauth2
+
+`energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
 ## Response Type
 
@@ -433,6 +511,12 @@ def set_enterprise_payer_roles(vin,
 |  --- | --- | --- | --- |
 | `vin` | `String` | Template, Required | - |
 | `body` | [`EnterprisePayerRequest`](../../doc/models/enterprise-payer-request.md) | Body, Required | - |
+
+## Requires scope
+
+### oauth2
+
+`energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
 ## Response Type
 
@@ -472,6 +556,12 @@ def get_enterprise_roles_for_a_vehicle(vin)
 |  --- | --- | --- | --- |
 | `vin` | `String` | Template, Required | - |
 
+## Requires scope
+
+### oauth2
+
+`energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
+
 ## Response Type
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `data` property of this instance returns the response data which is of type `Object`.
@@ -502,6 +592,12 @@ def get_fleet_status_for_vehicles(body)
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `body` | [`FleetStatusRequest`](../../doc/models/fleet-status-request.md) | Body, Required | - |
+
+## Requires scope
+
+### oauth2
+
+`energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
 ## Response Type
 
@@ -534,6 +630,12 @@ def create_or_update_fleet_telemetry_configuration(body)
 |  --- | --- | --- | --- |
 | `body` | `Object` | Body, Required | - |
 
+## Requires scope
+
+### oauth2
+
+`energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
+
 ## Response Type
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `data` property of this instance returns the response data which is of type `Object`.
@@ -564,6 +666,12 @@ def get_fleet_telemetry_configuration(vehicle_tag)
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `vehicle_tag` | `String` | Template, Required | - |
+
+## Requires scope
+
+### oauth2
+
+`energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
 ## Response Type
 
@@ -596,6 +704,12 @@ def delete_fleet_telemetry_configuration(vehicle_tag)
 |  --- | --- | --- | --- |
 | `vehicle_tag` | `String` | Template, Required | - |
 
+## Requires scope
+
+### oauth2
+
+`energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
+
 ## Response Type
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `data` property of this instance returns the response data which is of type `Object`.
@@ -615,7 +729,7 @@ end
 ```
 
 
-# Configure Fleet Telemetry Using Signed JWS Token
+# Configure Fleet Telemetry Using Signed Jws Token
 
 ```ruby
 def configure_fleet_telemetry_using_signed_jws_token(body)
@@ -626,6 +740,12 @@ def configure_fleet_telemetry_using_signed_jws_token(body)
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `body` | [`FleetTelemetryJwsRequest`](../../doc/models/fleet-telemetry-jws-request.md) | Body, Required | - |
+
+## Requires scope
+
+### oauth2
+
+`energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
 ## Response Type
 
@@ -657,6 +777,12 @@ def get_fleet_telemetry_errors_for_a_vehicle(vehicle_tag)
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `vehicle_tag` | `String` | Template, Required | - |
+
+## Requires scope
+
+### oauth2
+
+`energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
 ## Response Type
 

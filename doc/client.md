@@ -32,10 +32,14 @@ client = Client.new(
   bearer_auth_credentials: BearerAuthCredentials.new(
     access_token: 'AccessToken'
   ),
-  oauth_2_credentials: Oauth2Credentials.new(
-    oauth_client_id: 'OAuthClientId',
-    oauth_client_secret: 'OAuthClientSecret',
-    oauth_redirect_uri: 'OAuthRedirectUri'
+  oauth2_credentials: Oauth2Credentials.new(
+    o_auth_client_id: 'OAuthClientId',
+    o_auth_client_secret: 'OAuthClientSecret',
+    o_auth_redirect_uri: 'OAuthRedirectUri',
+    o_auth_scopes: [
+      OAuthScopeOauth2::OPENID,
+      OAuthScopeOauth2::OFFLINE_ACCESS
+    ]
   ),
   environment: Environment::PRODUCTION,
   logging_configuration: LoggingConfiguration.new(
@@ -75,5 +79,6 @@ The gateway for the SDK. This class acts as a factory for the Controllers and al
 | partner | Gets PartnerController |
 | user | Gets UserController |
 | vehicles | Gets VehiclesController |
-| oauth_authorization | Gets OauthAuthorizationController |
+| vehicle_commands | Gets VehicleCommandsController |
+| o_auth_authorization | Gets OAuthAuthorizationController |
 

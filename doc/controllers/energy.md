@@ -18,9 +18,9 @@ energy_controller = client.energy
 * [Get Live Site Status](../../doc/controllers/energy.md#get-live-site-status)
 * [Set Site Mode Autonomous or Self Consumption](../../doc/controllers/energy.md#set-site-mode-autonomous-or-self-consumption)
 * [Allow Disallow Charging From the Grid and Exporting Energy to the Grid](../../doc/controllers/energy.md#allow-disallow-charging-from-the-grid-and-exporting-energy-to-the-grid)
-* [Adjust Site S Off-Grid Vehicle Charging Reserve](../../doc/controllers/energy.md#adjust-site-s-off-grid-vehicle-charging-reserve)
+* [Adjust Site S Off Grid Vehicle Charging Reserve](../../doc/controllers/energy.md#adjust-site-s-off-grid-vehicle-charging-reserve)
 * [Update Storm Watch Participation](../../doc/controllers/energy.md#update-storm-watch-participation)
-* [Update Time-of-Use TOU Settings](../../doc/controllers/energy.md#update-time-of-use-tou-settings)
+* [Update Time of Use Tou Settings](../../doc/controllers/energy.md#update-time-of-use-tou-settings)
 * [Get User Products Vehicles Energy Sites](../../doc/controllers/energy.md#get-user-products-vehicles-energy-sites)
 * [Get Site Information Assets Settings Features](../../doc/controllers/energy.md#get-site-information-assets-settings-features)
 
@@ -38,6 +38,12 @@ def adjust_site_s_backup_reserve(energy_site_id,
 |  --- | --- | --- | --- |
 | `energy_site_id` | `String` | Template, Required | - |
 | `body` | [`BackupRequest`](../../doc/models/backup-request.md) | Body, Required | - |
+
+## Requires scope
+
+### oauth2
+
+`energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
 ## Response Type
 
@@ -86,6 +92,12 @@ def get_backup_or_energy_history(energy_site_id,
 | `end_date` | `DateTime` | Query, Required | - |
 | `period` | `String` | Query, Optional | - |
 | `time_zone` | `String` | Query, Optional | - |
+
+## Requires scope
+
+### oauth2
+
+`energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
 ## Response Type
 
@@ -137,6 +149,12 @@ def get_wall_connector_charging_history(energy_site_id,
 | `end_date` | `DateTime` | Query, Required | - |
 | `time_zone` | `String` | Query, Optional | - |
 
+## Requires scope
+
+### oauth2
+
+`energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
+
 ## Response Type
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `data` property of this instance returns the response data which is of type [`ChargeHistoryResponse`](../../doc/models/charge-history-response.md).
@@ -179,6 +197,12 @@ def get_live_site_status(energy_site_id)
 |  --- | --- | --- | --- |
 | `energy_site_id` | `String` | Template, Required | - |
 
+## Requires scope
+
+### oauth2
+
+`energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
+
 ## Response Type
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `data` property of this instance returns the response data which is of type [`LiveStatusResponse`](../../doc/models/live-status-response.md).
@@ -211,6 +235,12 @@ def set_site_mode_autonomous_or_self_consumption(energy_site_id,
 |  --- | --- | --- | --- |
 | `energy_site_id` | `String` | Template, Required | - |
 | `body` | [`OperationRequest`](../../doc/models/operation-request.md) | Body, Required | - |
+
+## Requires scope
+
+### oauth2
+
+`energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
 ## Response Type
 
@@ -252,6 +282,12 @@ def allow_disallow_charging_from_the_grid_and_exporting_energy_to_the_grid(energ
 | `energy_site_id` | `String` | Template, Required | - |
 | `body` | `Object` | Body, Optional | - |
 
+## Requires scope
+
+### oauth2
+
+`energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
+
 ## Response Type
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `data` property of this instance returns the response data which is of type [`GenericUpdateResponse`](../../doc/models/generic-update-response.md).
@@ -271,7 +307,7 @@ end
 ```
 
 
-# Adjust Site S Off-Grid Vehicle Charging Reserve
+# Adjust Site S Off Grid Vehicle Charging Reserve
 
 ```ruby
 def adjust_site_s_off_grid_vehicle_charging_reserve(energy_site_id,
@@ -284,6 +320,12 @@ def adjust_site_s_off_grid_vehicle_charging_reserve(energy_site_id,
 |  --- | --- | --- | --- |
 | `energy_site_id` | `String` | Template, Required | - |
 | `body` | [`OffGridVehicleChargingReserveRequest`](../../doc/models/off-grid-vehicle-charging-reserve-request.md) | Body, Required | - |
+
+## Requires scope
+
+### oauth2
+
+`energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
 ## Response Type
 
@@ -325,6 +367,12 @@ def update_storm_watch_participation(energy_site_id,
 | `energy_site_id` | `String` | Template, Required | - |
 | `body` | [`StormModeRequest`](../../doc/models/storm-mode-request.md) | Body, Required | - |
 
+## Requires scope
+
+### oauth2
+
+`energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
+
 ## Response Type
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `data` property of this instance returns the response data which is of type [`GenericUpdateResponse`](../../doc/models/generic-update-response.md).
@@ -351,7 +399,7 @@ end
 ```
 
 
-# Update Time-of-Use TOU Settings
+# Update Time of Use Tou Settings
 
 ```ruby
 def update_time_of_use_tou_settings(energy_site_id,
@@ -364,6 +412,12 @@ def update_time_of_use_tou_settings(energy_site_id,
 |  --- | --- | --- | --- |
 | `energy_site_id` | `String` | Template, Required | - |
 | `body` | [`TimeOfUseSettingsRequest`](../../doc/models/time-of-use-settings-request.md) | Body, Required | - |
+
+## Requires scope
+
+### oauth2
+
+`energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
 ## Response Type
 
@@ -397,6 +451,12 @@ end
 def get_user_products_vehicles_energy_sites
 ```
 
+## Requires scope
+
+### oauth2
+
+`energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
+
 ## Response Type
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `data` property of this instance returns the response data which is of type [`ProductsResponse`](../../doc/models/products-response.md).
@@ -425,6 +485,12 @@ def get_site_information_assets_settings_features(energy_site_id)
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `energy_site_id` | `String` | Template, Required | - |
+
+## Requires scope
+
+### oauth2
+
+`energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
 ## Response Type
 

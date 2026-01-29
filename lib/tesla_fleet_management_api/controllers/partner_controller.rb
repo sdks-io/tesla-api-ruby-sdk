@@ -14,7 +14,7 @@ module TeslaFleetManagementApi
                                      '/api/1/partner_accounts/fleet_telemetry_error_vins',
                                      Server::DEFAULT)
                    .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(Single.new('bearerAuth')))
+                   .auth(And.new('bearerAuth', 'oauth2')))
         .response(new_response_handler
                     .deserializer(APIHelper.method(:custom_type_deserializer))
                     .deserialize_into(BackupResponse.method(:from_hash))
@@ -30,7 +30,7 @@ module TeslaFleetManagementApi
                                      '/api/1/partner_accounts/fleet_telemetry_errors',
                                      Server::DEFAULT)
                    .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(Single.new('bearerAuth')))
+                   .auth(And.new('bearerAuth', 'oauth2')))
         .response(new_response_handler
                     .deserializer(APIHelper.method(:custom_type_deserializer))
                     .deserialize_into(FleetTelemetryErrorsResponse.method(:from_hash))
@@ -49,7 +49,7 @@ module TeslaFleetManagementApi
                    .query_param(new_parameter(domain, key: 'domain')
                                  .is_required(true))
                    .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(Single.new('bearerAuth')))
+                   .auth(And.new('bearerAuth', 'oauth2')))
         .response(new_response_handler
                     .deserializer(APIHelper.method(:custom_type_deserializer))
                     .deserialize_into(PublicKeyResponse.method(:from_hash))
@@ -71,7 +71,7 @@ module TeslaFleetManagementApi
                                 .is_required(true))
                    .header_param(new_parameter('application/json', key: 'accept'))
                    .body_serializer(proc do |param| param.to_json unless param.nil? end)
-                   .auth(Single.new('bearerAuth')))
+                   .auth(And.new('bearerAuth', 'oauth2')))
         .response(new_response_handler
                     .deserializer(APIHelper.method(:custom_type_deserializer))
                     .deserialize_into(RegisterPartnerResponse.method(:from_hash))
