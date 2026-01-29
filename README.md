@@ -10,16 +10,16 @@ Unofficial OpenAPI specification for Tesla Fleet Management Charging endpoints.
 Install the gem from the command line:
 
 ```bash
-gem install tesla-api-sdk -v 1.0.1
+gem install tesla-api-sdk -v 1.0.2
 ```
 
 Or add the gem to your Gemfile and run `bundle`:
 
 ```ruby
-gem 'tesla-api-sdk', '1.0.1'
+gem 'tesla-api-sdk', '1.0.2'
 ```
 
-For additional gem details, see the [RubyGems page for the tesla-api-sdk gem](https://rubygems.org/gems/tesla-api-sdk/versions/1.0.1).
+For additional gem details, see the [RubyGems page for the tesla-api-sdk gem](https://rubygems.org/gems/tesla-api-sdk/versions/1.0.2).
 
 ## IRB Console Usage
 
@@ -58,7 +58,7 @@ ruby bin/console
 
 ## Initialize the API Client
 
-**_Note:_** Documentation for the client can be found [here.](https://www.github.com/sdks-io/tesla-api-ruby-sdk/tree/1.0.1/doc/client.md)
+**_Note:_** Documentation for the client can be found [here.](https://www.github.com/sdks-io/tesla-api-ruby-sdk/tree/1.0.2/doc/client.md)
 
 The following parameters are configurable for the API Client:
 
@@ -74,10 +74,10 @@ The following parameters are configurable for the API Client:
 | retry_statuses | `Array` | A list of HTTP statuses to retry. <br> **Default: [408, 413, 429, 500, 502, 503, 504, 521, 522, 524]** |
 | retry_methods | `Array` | A list of HTTP methods to retry. <br> **Default: %i[get put]** |
 | http_callback | `HttpCallBack` | The Http CallBack allows defining callables for pre and post API calls. |
-| proxy_settings | [`ProxySettings`](https://www.github.com/sdks-io/tesla-api-ruby-sdk/tree/1.0.1/doc/proxy-settings.md) | Optional proxy configuration to route HTTP requests through a proxy server. |
-| logging_configuration | [`LoggingConfiguration`](https://www.github.com/sdks-io/tesla-api-ruby-sdk/tree/1.0.1/doc/logging-configuration.md) | The SDK logging configuration for API calls |
-| bearer_auth_credentials | [`BearerAuthCredentials`](https://www.github.com/sdks-io/tesla-api-ruby-sdk/tree/1.0.1/doc/auth/oauth-2-bearer-token.md) | The credential object for OAuth 2 Bearer token |
-| oauth_2_credentials | [`Oauth2Credentials`](https://www.github.com/sdks-io/tesla-api-ruby-sdk/tree/1.0.1/doc/auth/oauth-2-authorization-code-grant.md) | The credential object for OAuth 2 Authorization Code Grant |
+| proxy_settings | [`ProxySettings`](https://www.github.com/sdks-io/tesla-api-ruby-sdk/tree/1.0.2/doc/proxy-settings.md) | Optional proxy configuration to route HTTP requests through a proxy server. |
+| logging_configuration | [`LoggingConfiguration`](https://www.github.com/sdks-io/tesla-api-ruby-sdk/tree/1.0.2/doc/logging-configuration.md) | The SDK logging configuration for API calls |
+| bearer_auth_credentials | [`BearerAuthCredentials`](https://www.github.com/sdks-io/tesla-api-ruby-sdk/tree/1.0.2/doc/auth/oauth-2-bearer-token.md) | The credential object for OAuth 2 Bearer token |
+| thirdpartytoken_credentials | [`ThirdpartytokenCredentials`](https://www.github.com/sdks-io/tesla-api-ruby-sdk/tree/1.0.2/doc/auth/oauth-2-authorization-code-grant.md) | The credential object for OAuth 2 Authorization Code Grant |
 
 The API client can be initialized as follows:
 
@@ -91,13 +91,13 @@ client = Client.new(
   bearer_auth_credentials: BearerAuthCredentials.new(
     access_token: 'AccessToken'
   ),
-  oauth2_credentials: Oauth2Credentials.new(
+  thirdpartytoken_credentials: ThirdpartytokenCredentials.new(
     o_auth_client_id: 'OAuthClientId',
     o_auth_client_secret: 'OAuthClientSecret',
     o_auth_redirect_uri: 'OAuthRedirectUri',
     o_auth_scopes: [
-      OAuthScopeOauth2::OPENID,
-      OAuthScopeOauth2::OFFLINE_ACCESS
+      OAuthScopeThirdpartytoken::OPENID,
+      OAuthScopeThirdpartytoken::OFFLINE_ACCESS
     ]
   ),
   environment: Environment::PRODUCTION,
@@ -123,43 +123,43 @@ include TeslaFleetManagementApi
 client = Client.from_env
 ```
 
-See the [`Environment-Based Client Initialization`](https://www.github.com/sdks-io/tesla-api-ruby-sdk/tree/1.0.1/doc/environment-based-client-initialization.md) section for details.
+See the [`Environment-Based Client Initialization`](https://www.github.com/sdks-io/tesla-api-ruby-sdk/tree/1.0.2/doc/environment-based-client-initialization.md) section for details.
 
 ## Authorization
 
 This API uses the following authentication schemes.
 
-* [`bearerAuth (OAuth 2 Bearer token)`](https://www.github.com/sdks-io/tesla-api-ruby-sdk/tree/1.0.1/doc/auth/oauth-2-bearer-token.md)
-* [`oauth2 (OAuth 2 Authorization Code Grant)`](https://www.github.com/sdks-io/tesla-api-ruby-sdk/tree/1.0.1/doc/auth/oauth-2-authorization-code-grant.md)
+* [`bearerAuth (OAuth 2 Bearer token)`](https://www.github.com/sdks-io/tesla-api-ruby-sdk/tree/1.0.2/doc/auth/oauth-2-bearer-token.md)
+* [`thirdpartytoken (OAuth 2 Authorization Code Grant)`](https://www.github.com/sdks-io/tesla-api-ruby-sdk/tree/1.0.2/doc/auth/oauth-2-authorization-code-grant.md)
 
 ## List of APIs
 
-* [Vehicle Commands](https://www.github.com/sdks-io/tesla-api-ruby-sdk/tree/1.0.1/doc/controllers/vehicle-commands.md)
-* [Charging](https://www.github.com/sdks-io/tesla-api-ruby-sdk/tree/1.0.1/doc/controllers/charging.md)
-* [Energy](https://www.github.com/sdks-io/tesla-api-ruby-sdk/tree/1.0.1/doc/controllers/energy.md)
-* [Partner](https://www.github.com/sdks-io/tesla-api-ruby-sdk/tree/1.0.1/doc/controllers/partner.md)
-* [User](https://www.github.com/sdks-io/tesla-api-ruby-sdk/tree/1.0.1/doc/controllers/user.md)
-* [Vehicles](https://www.github.com/sdks-io/tesla-api-ruby-sdk/tree/1.0.1/doc/controllers/vehicles.md)
+* [Vehicle Commands](https://www.github.com/sdks-io/tesla-api-ruby-sdk/tree/1.0.2/doc/controllers/vehicle-commands.md)
+* [Charging](https://www.github.com/sdks-io/tesla-api-ruby-sdk/tree/1.0.2/doc/controllers/charging.md)
+* [Energy](https://www.github.com/sdks-io/tesla-api-ruby-sdk/tree/1.0.2/doc/controllers/energy.md)
+* [Partner](https://www.github.com/sdks-io/tesla-api-ruby-sdk/tree/1.0.2/doc/controllers/partner.md)
+* [User](https://www.github.com/sdks-io/tesla-api-ruby-sdk/tree/1.0.2/doc/controllers/user.md)
+* [Vehicles](https://www.github.com/sdks-io/tesla-api-ruby-sdk/tree/1.0.2/doc/controllers/vehicles.md)
 
 ## SDK Infrastructure
 
 ### Configuration
 
-* [ProxySettings](https://www.github.com/sdks-io/tesla-api-ruby-sdk/tree/1.0.1/doc/proxy-settings.md)
-* [Environment-Based Client Initialization](https://www.github.com/sdks-io/tesla-api-ruby-sdk/tree/1.0.1/doc/environment-based-client-initialization.md)
-* [AbstractLogger](https://www.github.com/sdks-io/tesla-api-ruby-sdk/tree/1.0.1/doc/abstract-logger.md)
-* [LoggingConfiguration](https://www.github.com/sdks-io/tesla-api-ruby-sdk/tree/1.0.1/doc/logging-configuration.md)
-* [RequestLoggingConfiguration](https://www.github.com/sdks-io/tesla-api-ruby-sdk/tree/1.0.1/doc/request-logging-configuration.md)
-* [ResponseLoggingConfiguration](https://www.github.com/sdks-io/tesla-api-ruby-sdk/tree/1.0.1/doc/response-logging-configuration.md)
+* [ProxySettings](https://www.github.com/sdks-io/tesla-api-ruby-sdk/tree/1.0.2/doc/proxy-settings.md)
+* [Environment-Based Client Initialization](https://www.github.com/sdks-io/tesla-api-ruby-sdk/tree/1.0.2/doc/environment-based-client-initialization.md)
+* [AbstractLogger](https://www.github.com/sdks-io/tesla-api-ruby-sdk/tree/1.0.2/doc/abstract-logger.md)
+* [LoggingConfiguration](https://www.github.com/sdks-io/tesla-api-ruby-sdk/tree/1.0.2/doc/logging-configuration.md)
+* [RequestLoggingConfiguration](https://www.github.com/sdks-io/tesla-api-ruby-sdk/tree/1.0.2/doc/request-logging-configuration.md)
+* [ResponseLoggingConfiguration](https://www.github.com/sdks-io/tesla-api-ruby-sdk/tree/1.0.2/doc/response-logging-configuration.md)
 
 ### HTTP
 
-* [HttpResponse](https://www.github.com/sdks-io/tesla-api-ruby-sdk/tree/1.0.1/doc/http-response.md)
-* [HttpRequest](https://www.github.com/sdks-io/tesla-api-ruby-sdk/tree/1.0.1/doc/http-request.md)
+* [HttpResponse](https://www.github.com/sdks-io/tesla-api-ruby-sdk/tree/1.0.2/doc/http-response.md)
+* [HttpRequest](https://www.github.com/sdks-io/tesla-api-ruby-sdk/tree/1.0.2/doc/http-request.md)
 
 ### Utilities
 
-* [ApiResponse](https://www.github.com/sdks-io/tesla-api-ruby-sdk/tree/1.0.1/doc/api-response.md)
-* [ApiHelper](https://www.github.com/sdks-io/tesla-api-ruby-sdk/tree/1.0.1/doc/api-helper.md)
-* [DateTimeHelper](https://www.github.com/sdks-io/tesla-api-ruby-sdk/tree/1.0.1/doc/date-time-helper.md)
+* [ApiResponse](https://www.github.com/sdks-io/tesla-api-ruby-sdk/tree/1.0.2/doc/api-response.md)
+* [ApiHelper](https://www.github.com/sdks-io/tesla-api-ruby-sdk/tree/1.0.2/doc/api-helper.md)
+* [DateTimeHelper](https://www.github.com/sdks-io/tesla-api-ruby-sdk/tree/1.0.2/doc/date-time-helper.md)
 

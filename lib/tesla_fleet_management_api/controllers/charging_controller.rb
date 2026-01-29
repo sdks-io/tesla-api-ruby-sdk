@@ -14,7 +14,7 @@ module TeslaFleetManagementApi
                                      '/api/1/dx/charging/history',
                                      Server::DEFAULT)
                    .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(And.new('bearerAuth', 'oauth2')))
+                   .auth(And.new('bearerAuth', 'thirdpartytoken')))
         .response(new_response_handler
                     .deserializer(APIHelper.method(:custom_type_deserializer))
                     .deserialize_into(ChargingHistoryResponse.method(:from_hash))
@@ -35,7 +35,7 @@ module TeslaFleetManagementApi
                                     .is_required(true)
                                     .should_encode(true))
                    .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(And.new('bearerAuth', 'oauth2')))
+                   .auth(And.new('bearerAuth', 'thirdpartytoken')))
         .response(new_response_handler
                     .deserializer(APIHelper.method(:dynamic_deserializer))
                     .is_api_response(true))
@@ -51,7 +51,7 @@ module TeslaFleetManagementApi
                                      '/api/1/dx/charging/sessions',
                                      Server::DEFAULT)
                    .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(And.new('bearerAuth', 'oauth2')))
+                   .auth(And.new('bearerAuth', 'thirdpartytoken')))
         .response(new_response_handler
                     .deserializer(APIHelper.method(:custom_type_deserializer))
                     .deserialize_into(ChargingSessionsResponse.method(:from_hash))

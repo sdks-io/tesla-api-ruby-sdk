@@ -13,9 +13,9 @@ module TeslaFleetManagementApi
       config.user_agent_detail
     end
 
-    # Returns the configured authentication oauth2 instance.
-    def oauth2
-      @auth_managers['oauth2']
+    # Returns the configured authentication thirdpartytoken instance.
+    def thirdpartytoken
+      @auth_managers['thirdpartytoken']
     end
 
     # Access to charging controller.
@@ -66,7 +66,8 @@ module TeslaFleetManagementApi
       retry_statuses: [408, 413, 429, 500, 502, 503, 504, 521, 522, 524],
       retry_methods: %i[get put], http_callback: nil, proxy_settings: nil,
       logging_configuration: nil, environment: Environment::PRODUCTION,
-      bearer_auth_credentials: nil, oauth2_credentials: nil, config: nil
+      bearer_auth_credentials: nil, thirdpartytoken_credentials: nil,
+      config: nil
     )
       @config = if config.nil?
                   Configuration.new(
@@ -79,7 +80,7 @@ module TeslaFleetManagementApi
                     logging_configuration: logging_configuration,
                     environment: environment,
                     bearer_auth_credentials: bearer_auth_credentials,
-                    oauth2_credentials: oauth2_credentials
+                    thirdpartytoken_credentials: thirdpartytoken_credentials
                   )
                 else
                   config
@@ -101,9 +102,11 @@ module TeslaFleetManagementApi
     def initialize_auth_managers(global_config)
       @auth_managers = {}
       http_client_config = global_config.client_configuration
-      %w[bearerAuth oauth2].each { |auth| @auth_managers[auth] = nil }
+      %w[bearerAuth thirdpartytoken].each { |auth| @auth_managers[auth] = nil }
       @auth_managers['bearerAuth'] = BearerAuth.new(http_client_config.bearer_auth_credentials)
-      @auth_managers['oauth2'] = Oauth2.new(http_client_config.oauth2_credentials, global_config)
+      @auth_managers['thirdpartytoken'] = Thirdpartytoken.new(
+        http_client_config.thirdpartytoken_credentials, global_config
+      )
     end
 
     # Creates a client directly from environment variables.

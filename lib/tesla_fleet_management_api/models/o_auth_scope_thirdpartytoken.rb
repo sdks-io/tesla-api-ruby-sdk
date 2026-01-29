@@ -5,8 +5,8 @@
 
 module TeslaFleetManagementApi
   # OAuth 2 scopes supported by the API
-  class OAuthScopeOauth2
-    O_AUTH_SCOPE_OAUTH2 = [
+  class OAuthScopeThirdpartytoken
+    O_AUTH_SCOPE_THIRDPARTYTOKEN = [
       # Allow Tesla customers to sign in to the application with their Tesla
       # credentials.
       OPENID = 'openid'.freeze,
@@ -54,7 +54,7 @@ module TeslaFleetManagementApi
     def self.validate(value)
       return false if value.nil?
 
-      O_AUTH_SCOPE_OAUTH2.include?(value)
+      O_AUTH_SCOPE_THIRDPARTYTOKEN.include?(value)
     end
 
     def self.from_value(value, default_value = OPENID)

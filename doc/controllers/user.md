@@ -26,7 +26,7 @@ def get_custom_feature_flags_for_a_user
 
 ## Requires scope
 
-### oauth2
+### thirdpartytoken
 
 `energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
@@ -55,7 +55,7 @@ def get_summary_of_a_user_s_account
 
 ## Requires scope
 
-### oauth2
+### thirdpartytoken
 
 `energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
@@ -84,7 +84,7 @@ def get_active_orders_for_a_user
 
 ## Requires scope
 
-### oauth2
+### thirdpartytoken
 
 `energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
@@ -113,7 +113,7 @@ def get_user_s_region_and_fleet_api_base_url
 
 ## Requires scope
 
-### oauth2
+### thirdpartytoken
 
 `energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 

@@ -41,7 +41,7 @@ def list_vehicles
 
 ## Requires scope
 
-### oauth2
+### thirdpartytoken
 
 `energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
@@ -76,7 +76,7 @@ def get_vehicle(vehicle_tag)
 
 ## Requires scope
 
-### oauth2
+### thirdpartytoken
 
 `energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
@@ -113,7 +113,7 @@ def mobile_enabled(vehicle_tag)
 
 ## Requires scope
 
-### oauth2
+### thirdpartytoken
 
 `energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
@@ -150,7 +150,7 @@ def nearby_charging_sites(vehicle_tag)
 
 ## Requires scope
 
-### oauth2
+### thirdpartytoken
 
 `energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
@@ -187,7 +187,7 @@ def vehicle_live_data(vehicle_tag)
 
 ## Requires scope
 
-### oauth2
+### thirdpartytoken
 
 `energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
@@ -224,7 +224,7 @@ def wake_up_vehicle(vehicle_tag)
 
 ## Requires scope
 
-### oauth2
+### thirdpartytoken
 
 `energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
@@ -261,7 +261,7 @@ def vehicle_specs(vin)
 
 ## Requires scope
 
-### oauth2
+### thirdpartytoken
 
 `energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
@@ -298,7 +298,7 @@ def vehicle_options(vin)
 
 ## Requires scope
 
-### oauth2
+### thirdpartytoken
 
 `energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
@@ -329,7 +329,7 @@ def warranty_details
 
 ## Requires scope
 
-### oauth2
+### thirdpartytoken
 
 `energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
@@ -364,7 +364,7 @@ def get_allowed_drivers_for_a_vehicle(vehicle_tag)
 
 ## Requires scope
 
-### oauth2
+### thirdpartytoken
 
 `energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
@@ -401,7 +401,7 @@ def remove_driver_access_from_a_vehicle(vehicle_tag)
 
 ## Requires scope
 
-### oauth2
+### thirdpartytoken
 
 `energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
@@ -438,7 +438,7 @@ def get_eligible_vehicle_subscriptions(vin)
 
 ## Requires scope
 
-### oauth2
+### thirdpartytoken
 
 `energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
@@ -475,7 +475,7 @@ def get_eligible_vehicle_upgrades(vin)
 
 ## Requires scope
 
-### oauth2
+### thirdpartytoken
 
 `energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
@@ -514,7 +514,7 @@ def set_enterprise_payer_roles(vin,
 
 ## Requires scope
 
-### oauth2
+### thirdpartytoken
 
 `energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
@@ -558,7 +558,7 @@ def get_enterprise_roles_for_a_vehicle(vin)
 
 ## Requires scope
 
-### oauth2
+### thirdpartytoken
 
 `energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
@@ -595,7 +595,7 @@ def get_fleet_status_for_vehicles(body)
 
 ## Requires scope
 
-### oauth2
+### thirdpartytoken
 
 `energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
@@ -632,7 +632,7 @@ def create_or_update_fleet_telemetry_configuration(body)
 
 ## Requires scope
 
-### oauth2
+### thirdpartytoken
 
 `energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
@@ -669,7 +669,7 @@ def get_fleet_telemetry_configuration(vehicle_tag)
 
 ## Requires scope
 
-### oauth2
+### thirdpartytoken
 
 `energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
@@ -706,7 +706,7 @@ def delete_fleet_telemetry_configuration(vehicle_tag)
 
 ## Requires scope
 
-### oauth2
+### thirdpartytoken
 
 `energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
@@ -743,7 +743,7 @@ def configure_fleet_telemetry_using_signed_jws_token(body)
 
 ## Requires scope
 
-### oauth2
+### thirdpartytoken
 
 `energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
@@ -780,7 +780,7 @@ def get_fleet_telemetry_errors_for_a_vehicle(vehicle_tag)
 
 ## Requires scope
 
-### oauth2
+### thirdpartytoken
 
 `energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 

@@ -51,7 +51,7 @@ def actuate_trunk(vehicle_tag,
 
 ## Requires scope
 
-### oauth2
+### thirdpartytoken
 
 `energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
@@ -97,7 +97,7 @@ def add_charge_schedule(vehicle_tag,
 
 ## Requires scope
 
-### oauth2
+### thirdpartytoken
 
 `energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
@@ -146,7 +146,7 @@ def add_precondition_schedule(vehicle_tag,
 
 ## Requires scope
 
-### oauth2
+### thirdpartytoken
 
 `energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
@@ -195,7 +195,7 @@ def adjust_media_volume(vehicle_tag,
 
 ## Requires scope
 
-### oauth2
+### thirdpartytoken
 
 `energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
@@ -239,7 +239,7 @@ def start_climate_preconditioning(vehicle_tag)
 
 ## Requires scope
 
-### oauth2
+### thirdpartytoken
 
 `energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
@@ -276,7 +276,7 @@ def stop_climate_preconditioning(vehicle_tag)
 
 ## Requires scope
 
-### oauth2
+### thirdpartytoken
 
 `energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
@@ -313,7 +313,7 @@ def cancel_software_update(vehicle_tag)
 
 ## Requires scope
 
-### oauth2
+### thirdpartytoken
 
 `energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
@@ -350,7 +350,7 @@ def charge_max_range(vehicle_tag)
 
 ## Requires scope
 
-### oauth2
+### thirdpartytoken
 
 `energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
@@ -387,7 +387,7 @@ def open_charge_port_door(vehicle_tag)
 
 ## Requires scope
 
-### oauth2
+### thirdpartytoken
 
 `energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
@@ -424,7 +424,7 @@ def close_charge_port_door(vehicle_tag)
 
 ## Requires scope
 
-### oauth2
+### thirdpartytoken
 
 `energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
@@ -461,7 +461,7 @@ def charge_standard(vehicle_tag)
 
 ## Requires scope
 
-### oauth2
+### thirdpartytoken
 
 `energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
@@ -498,7 +498,7 @@ def start_charging(vehicle_tag)
 
 ## Requires scope
 
-### oauth2
+### thirdpartytoken
 
 `energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
@@ -535,7 +535,7 @@ def stop_charging(vehicle_tag)
 
 ## Requires scope
 
-### oauth2
+### thirdpartytoken
 
 `energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
@@ -574,7 +574,7 @@ def clear_pin_to_drive_admin(vehicle_tag)
 
 ## Requires scope
 
-### oauth2
+### thirdpartytoken
 
 `energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
@@ -611,7 +611,7 @@ def lock_doors(vehicle_tag)
 
 ## Requires scope
 
-### oauth2
+### thirdpartytoken
 
 `energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
@@ -648,7 +648,7 @@ def unlock_doors(vehicle_tag)
 
 ## Requires scope
 
-### oauth2
+### thirdpartytoken
 
 `energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
@@ -687,7 +687,7 @@ def erase_user_data(vehicle_tag)
 
 ## Requires scope
 
-### oauth2
+### thirdpartytoken
 
 `energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
@@ -726,7 +726,7 @@ def flash_lights(vehicle_tag)
 
 ## Requires scope
 
-### oauth2
+### thirdpartytoken
 
 `energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
@@ -765,7 +765,7 @@ def enable_or_disable_guest_mode(vehicle_tag,
 
 ## Requires scope
 
-### oauth2
+### thirdpartytoken
 
 `energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
@@ -809,7 +809,7 @@ def honk_horn(vehicle_tag)
 
 ## Requires scope
 
-### oauth2
+### thirdpartytoken
 
 `energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
@@ -846,7 +846,7 @@ def next_favorite_media_track(vehicle_tag)
 
 ## Requires scope
 
-### oauth2
+### thirdpartytoken
 
 `energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 

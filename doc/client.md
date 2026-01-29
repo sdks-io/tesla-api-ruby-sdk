@@ -18,7 +18,7 @@ The following parameters are configurable for the API Client:
 | proxy_settings | [`ProxySettings`](../doc/proxy-settings.md) | Optional proxy configuration to route HTTP requests through a proxy server. |
 | logging_configuration | [`LoggingConfiguration`](../doc/logging-configuration.md) | The SDK logging configuration for API calls |
 | bearer_auth_credentials | [`BearerAuthCredentials`](auth/oauth-2-bearer-token.md) | The credential object for OAuth 2 Bearer token |
-| oauth_2_credentials | [`Oauth2Credentials`](auth/oauth-2-authorization-code-grant.md) | The credential object for OAuth 2 Authorization Code Grant |
+| thirdpartytoken_credentials | [`ThirdpartytokenCredentials`](auth/oauth-2-authorization-code-grant.md) | The credential object for OAuth 2 Authorization Code Grant |
 
 The API client can be initialized as follows:
 
@@ -32,13 +32,13 @@ client = Client.new(
   bearer_auth_credentials: BearerAuthCredentials.new(
     access_token: 'AccessToken'
   ),
-  oauth2_credentials: Oauth2Credentials.new(
+  thirdpartytoken_credentials: ThirdpartytokenCredentials.new(
     o_auth_client_id: 'OAuthClientId',
     o_auth_client_secret: 'OAuthClientSecret',
     o_auth_redirect_uri: 'OAuthRedirectUri',
     o_auth_scopes: [
-      OAuthScopeOauth2::OPENID,
-      OAuthScopeOauth2::OFFLINE_ACCESS
+      OAuthScopeThirdpartytoken::OPENID,
+      OAuthScopeThirdpartytoken::OFFLINE_ACCESS
     ]
   ),
   environment: Environment::PRODUCTION,

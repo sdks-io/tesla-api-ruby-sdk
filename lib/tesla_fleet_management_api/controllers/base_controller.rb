@@ -10,7 +10,7 @@ module TeslaFleetManagementApi
     attr_accessor :config, :http_call_back
 
     def self.user_agent
-      'Ruby SDK, Version: 1.0.1, on OS {os-info}'
+      'Ruby SDK, Version: 1.0.2, on OS {os-info}'
     end
 
     def self.user_agent_parameters

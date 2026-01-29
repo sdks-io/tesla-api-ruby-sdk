@@ -3,7 +3,7 @@
 
 
 
-Documentation for accessing and setting credentials for oauth2.
+Documentation for accessing and setting credentials for thirdpartytoken.
 
 ## Auth Credentials
 
@@ -13,11 +13,11 @@ Documentation for accessing and setting credentials for oauth2.
 | OAuthClientSecret | `String` | OAuth 2 Client Secret | `o_auth_client_secret` |
 | OAuthRedirectUri | `String` | OAuth 2 Redirection endpoint or Callback Uri | `o_auth_redirect_uri` |
 | OAuthToken | `OAuthToken` | Object for storing information about the OAuth token | `o_auth_token` |
-| OAuthScopes | `Array[OAuthScopeOauth2]` | List of scopes that apply to the OAuth token | `o_auth_scopes` |
+| OAuthScopes | `Array[OAuthScopeThirdpartytoken]` | List of scopes that apply to the OAuth token | `o_auth_scopes` |
 
 
 
-**Note:** Auth credentials can be set using `Oauth2Credentials` object, passed in as named parameter `oauth2_credentials` in the client initialization.
+**Note:** Auth credentials can be set using `ThirdpartytokenCredentials` object, passed in as named parameter `thirdpartytoken_credentials` in the client initialization.
 
 ## Usage Example
 
@@ -30,13 +30,13 @@ require 'tesla_fleet_management_api'
 include TeslaFleetManagementApi
 
 client = Client.new(
-  oauth2_credentials: Oauth2Credentials.new(
+  thirdpartytoken_credentials: ThirdpartytokenCredentials.new(
     o_auth_client_id: 'OAuthClientId',
     o_auth_client_secret: 'OAuthClientSecret',
     o_auth_redirect_uri: 'OAuthRedirectUri',
     o_auth_scopes: [
-      OAuthScopeOauth2::OPENID,
-      OAuthScopeOauth2::OFFLINE_ACCESS
+      OAuthScopeThirdpartytoken::OPENID,
+      OAuthScopeThirdpartytoken::OFFLINE_ACCESS
     ]
   )
 )
@@ -51,7 +51,7 @@ Your application must obtain user authorization before it can execute an endpoin
 To obtain user's consent, you must redirect the user to the authorization page.The `get_authorization_url` method creates the URL to the authorization page. You must have initialized the client with scopes for which you need permission to access.
 
 ```ruby
-auth_url = client.oauth2.get_authorization_url
+auth_url = client.thirdpartytoken.get_authorization_url
 ```
 
 ### 3\. Handle the OAuth server response
@@ -76,10 +76,10 @@ After the server receives the code, it can exchange this for an *access token*. 
 
 ```ruby
 begin
-  token = client.oauth2.fetch_token
+  token = client.thirdpartytoken.fetch_token
   # update the cloned configuration with the token
-  oauth2_credentials = client.config.oauth2_credentials.clone_with(o_auth_token: token)
-  config = client.config.clone_with(oauth2_credentials: oauth2_credentials)
+  thirdpartytoken_credentials = client.config.thirdpartytoken_credentials.clone_with(o_auth_token: token)
+  config = client.config.clone_with(thirdpartytoken_credentials: thirdpartytoken_credentials)
   # re-instantiate the client with updated configuration
   client = TeslaFleetManagementApi::Client.new(config: config)
 rescue OAuthProviderException => ex
@@ -91,7 +91,7 @@ end
 
 ### Scopes
 
-Scopes enable your application to only request access to the resources it needs while enabling users to control the amount of access they grant to your application. Available scopes are defined in the [`OAuthScopeOauth2`](../../doc/models/o-auth-scope-oauth-2.md) enumeration.
+Scopes enable your application to only request access to the resources it needs while enabling users to control the amount of access they grant to your application. Available scopes are defined in the [`OAuthScopeThirdpartytoken`](../../doc/models/o-auth-scope-thirdpartytoken.md) enumeration.
 
 | Scope Name | Description |
 |  --- | --- |
@@ -116,8 +116,8 @@ if client.auth.token_expired?
   begin
     token = client.auth.refresh_token
     # Update the cloned configuration with the token
-    oauth2_credentials = client.config.oauth2_credentials.clone_with(o_auth_token: token)
-    config = client.config.clone_with(oauth2_credentials: oauth2_credentials)
+    thirdpartytoken_credentials = client.config.thirdpartytoken_credentials.clone_with(o_auth_token: token)
+    config = client.config.clone_with(thirdpartytoken_credentials: thirdpartytoken_credentials)
     # Re-instantiate the client with updated configuration
     client = Client.new(config: config)
   rescue OAuthProviderException => ex
@@ -136,7 +136,7 @@ It is recommended that you store the access token for reuse.
 
 ```ruby
 # store token
-save_token_to_database(client.config.oauth2_credentials.o_auth_token)
+save_token_to_database(client.config.thirdpartytoken_credentials.o_auth_token)
 ```
 
 ### Creating a client from a stored token
@@ -148,8 +148,8 @@ To authorize a client using a stored access token, just set the access token in 
 token = load_token_from_database
 
 # Update the cloned configuration with the token
-  oauth2_credentials = client.config.oauth2_credentials.clone_with(o_auth_token: token)
-config = client.config.clone_with(oauth2_credentials: oauth2_credentials)
+  thirdpartytoken_credentials = client.config.thirdpartytoken_credentials.clone_with(o_auth_token: token)
+config = client.config.clone_with(thirdpartytoken_credentials: thirdpartytoken_credentials)
 # Re-instantiate the client with updated configuration
 client = Client.new(config: config)
 ```
@@ -180,8 +180,8 @@ client = Client.new
 previous_token = load_token_from_database
 if previous_token
   # restore previous access token and update the cloned configuration with the token
-  oauth2_credentials = client.config.oauth2_credentials.clone_with(o_auth_token: previous_token)
-  config = client.config.clone_with(oauth2_credentials: oauth2_credentials)
+  thirdpartytoken_credentials = client.config.thirdpartytoken_credentials.clone_with(o_auth_token: previous_token)
+  config = client.config.clone_with(thirdpartytoken_credentials: thirdpartytoken_credentials)
   # re-instantiate the client with updated configuration
   client = TeslaFleetManagementApi::Client.new(config: config)
 else

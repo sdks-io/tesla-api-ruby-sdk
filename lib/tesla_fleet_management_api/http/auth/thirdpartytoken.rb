@@ -5,27 +5,27 @@
 
 module TeslaFleetManagementApi
   # Utility class for OAuth 2 authorization and token management.
-  class Oauth2 < CoreLibrary::HeaderAuth
+  class Thirdpartytoken < CoreLibrary::HeaderAuth
     include CoreLibrary
     # Display error message on occurrence of authentication failure.
     # @returns [String] The oAuth error message.
     def error_message
-      'Oauth2: OAuthToken is undefined or expired.'
+      'Thirdpartytoken: OAuthToken is undefined or expired.'
     end
 
     # Initialization constructor.
-    def initialize(oauth2_credentials, config)
+    def initialize(thirdpartytoken_credentials, config)
       auth_params = {}
-      @_o_auth_client_id = oauth2_credentials.o_auth_client_id unless
-        oauth2_credentials.nil? || oauth2_credentials.o_auth_client_id.nil?
-      @_o_auth_client_secret = oauth2_credentials.o_auth_client_secret unless
-        oauth2_credentials.nil? || oauth2_credentials.o_auth_client_secret.nil?
-      @_o_auth_redirect_uri = oauth2_credentials.o_auth_redirect_uri unless
-        oauth2_credentials.nil? || oauth2_credentials.o_auth_redirect_uri.nil?
-      @_o_auth_token = oauth2_credentials.o_auth_token unless
-        oauth2_credentials.nil? || oauth2_credentials.o_auth_token.nil?
-      @_o_auth_scopes = oauth2_credentials.o_auth_scopes unless
-        oauth2_credentials.nil? || oauth2_credentials.o_auth_scopes.nil?
+      @_o_auth_client_id = thirdpartytoken_credentials.o_auth_client_id unless
+        thirdpartytoken_credentials.nil? || thirdpartytoken_credentials.o_auth_client_id.nil?
+      @_o_auth_client_secret = thirdpartytoken_credentials.o_auth_client_secret unless
+        thirdpartytoken_credentials.nil? || thirdpartytoken_credentials.o_auth_client_secret.nil?
+      @_o_auth_redirect_uri = thirdpartytoken_credentials.o_auth_redirect_uri unless
+        thirdpartytoken_credentials.nil? || thirdpartytoken_credentials.o_auth_redirect_uri.nil?
+      @_o_auth_token = thirdpartytoken_credentials.o_auth_token unless
+        thirdpartytoken_credentials.nil? || thirdpartytoken_credentials.o_auth_token.nil?
+      @_o_auth_scopes = thirdpartytoken_credentials.o_auth_scopes unless
+        thirdpartytoken_credentials.nil? || thirdpartytoken_credentials.o_auth_scopes.nil?
       @_config = config
       @_o_auth_api = OAuthAuthorizationController.new(config)
       auth_params[:Authorization] = "Bearer #{@_o_auth_token.access_token}" unless @_o_auth_token.nil?
@@ -72,7 +72,7 @@ module TeslaFleetManagementApi
     # @param [Hash] additional_params Any additional form parameters.
     # @return [OAuthToken] The oAuth token instance.
     def fetch_token(auth_code, additional_params: nil)
-      token = @_o_auth_api.request_token_oauth2(
+      token = @_o_auth_api.request_token_thirdpartytoken(
         build_basic_auth_header,
         auth_code,
         @_o_auth_redirect_uri,
@@ -95,7 +95,7 @@ module TeslaFleetManagementApi
     # @param [Hash] additional_params Any additional form parameters.
     # @return [OAuthToken] The oAuth token instance.
     def refresh_token(additional_params: nil)
-      token = @_o_auth_api.refresh_token_oauth2(
+      token = @_o_auth_api.refresh_token_thirdpartytoken(
         build_basic_auth_header,
         @_o_auth_token.refresh_token,
         scope: !@_o_auth_scopes.nil? ? Array(@_o_auth_scopes).compact.join(' ') : nil,
@@ -108,8 +108,8 @@ module TeslaFleetManagementApi
     end
   end
 
-  # Data class for Oauth2Credentials.
-  class Oauth2Credentials
+  # Data class for ThirdpartytokenCredentials.
+  class ThirdpartytokenCredentials
     attr_reader :o_auth_client_id, :o_auth_client_secret, :o_auth_redirect_uri,
                 :o_auth_token, :o_auth_scopes
 
@@ -127,10 +127,10 @@ module TeslaFleetManagementApi
     end
 
     def self.from_env
-      o_auth_client_id = ENV['OAUTH2_O_AUTH_CLIENT_ID']
-      o_auth_client_secret = ENV['OAUTH2_O_AUTH_CLIENT_SECRET']
-      o_auth_redirect_uri = ENV['OAUTH2_O_AUTH_REDIRECT_URI']
-      o_auth_scopes = ENV['OAUTH2_O_AUTH_SCOPES']
+      o_auth_client_id = ENV['THIRDPARTYTOKEN_O_AUTH_CLIENT_ID']
+      o_auth_client_secret = ENV['THIRDPARTYTOKEN_O_AUTH_CLIENT_SECRET']
+      o_auth_redirect_uri = ENV['THIRDPARTYTOKEN_O_AUTH_REDIRECT_URI']
+      o_auth_scopes = ENV['THIRDPARTYTOKEN_O_AUTH_SCOPES']
       all_nil = [
         o_auth_client_id,
         o_auth_client_secret,
@@ -153,11 +153,11 @@ module TeslaFleetManagementApi
       o_auth_token ||= self.o_auth_token
       o_auth_scopes ||= self.o_auth_scopes
 
-      Oauth2Credentials.new(o_auth_client_id: o_auth_client_id,
-                            o_auth_client_secret: o_auth_client_secret,
-                            o_auth_redirect_uri: o_auth_redirect_uri,
-                            o_auth_token: o_auth_token,
-                            o_auth_scopes: o_auth_scopes)
+      ThirdpartytokenCredentials.new(o_auth_client_id: o_auth_client_id,
+                                     o_auth_client_secret: o_auth_client_secret,
+                                     o_auth_redirect_uri: o_auth_redirect_uri,
+                                     o_auth_token: o_auth_token,
+                                     o_auth_scopes: o_auth_scopes)
     end
   end
 end

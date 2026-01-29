@@ -27,7 +27,7 @@ def get_charging_history
 
 ## Requires scope
 
-### oauth2
+### thirdpartytoken
 
 `energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
@@ -64,7 +64,7 @@ def get_charging_invoice(id)
 
 ## Requires scope
 
-### oauth2
+### thirdpartytoken
 
 `energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 
@@ -97,7 +97,7 @@ def get_charging_sessions
 
 ## Requires scope
 
-### oauth2
+### thirdpartytoken
 
 `energy_cmds`, `energy_device_data`, `enterprise_management`, `offline_access`, `openid`, `user_data`, `vehicle_charging_cmds`, `vehicle_cmds`, `vehicle_device_data`, `vehicle_location`, `vehicle_specs`
 

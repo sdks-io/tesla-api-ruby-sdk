@@ -14,10 +14,10 @@ module TeslaFleetManagementApi
     # @param [Hash] _field_parameters Additional optional form parameters are
     # supported by this endpoint.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def request_token_oauth2(authorization,
-                             code,
-                             redirect_uri,
-                             _field_parameters: nil)
+    def request_token_thirdpartytoken(authorization,
+                                      code,
+                                      redirect_uri,
+                                      _field_parameters: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/token',
@@ -54,10 +54,10 @@ module TeslaFleetManagementApi
     # @param [Hash] _field_parameters Additional optional form parameters are
     # supported by this endpoint.
     # @return [ApiResponse] Complete http response with raw body and status code.
-    def refresh_token_oauth2(authorization,
-                             refresh_token,
-                             scope: nil,
-                             _field_parameters: nil)
+    def refresh_token_thirdpartytoken(authorization,
+                                      refresh_token,
+                                      scope: nil,
+                                      _field_parameters: nil)
       @api_call
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/token',

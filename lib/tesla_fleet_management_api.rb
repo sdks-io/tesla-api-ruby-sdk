@@ -31,7 +31,7 @@ require_relative 'tesla_fleet_management_api/logging/configuration/' \
                  'api_logging_configuration'
 require_relative 'tesla_fleet_management_api/logging/sdk_logger'
 require_relative 'tesla_fleet_management_api/http/auth/bearer_auth'
-require_relative 'tesla_fleet_management_api/http/auth/oauth2'
+require_relative 'tesla_fleet_management_api/http/auth/thirdpartytoken'
 
 # Models
 require_relative 'tesla_fleet_management_api/models/base_model'
@@ -143,7 +143,8 @@ require_relative 'tesla_fleet_management_api/models/' \
                  'kind_get_wall_connector_charging_history'
 require_relative 'tesla_fleet_management_api/models/which_trunk'
 require_relative 'tesla_fleet_management_api/models/o_auth_provider_error'
-require_relative 'tesla_fleet_management_api/models/o_auth_scope_oauth2'
+require_relative 'tesla_fleet_management_api/models/' \
+                 'o_auth_scope_thirdpartytoken'
 
 # Exceptions
 require_relative 'tesla_fleet_management_api/exceptions/api_exception'
