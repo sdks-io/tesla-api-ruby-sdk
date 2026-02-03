@@ -14,7 +14,7 @@ module TeslaFleetManagementApi
                                      '/api/1/users/feature_config',
                                      Server::DEFAULT)
                    .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(Or.new('thirdpartytoken', 'bearerAuth')))
+                   .auth(Single.new('thirdpartytoken')))
         .response(new_response_handler
                     .deserializer(APIHelper.method(:custom_type_deserializer))
                     .deserialize_into(BackupResponse.method(:from_hash))
@@ -30,7 +30,7 @@ module TeslaFleetManagementApi
                                      '/api/1/users/me',
                                      Server::DEFAULT)
                    .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(Or.new('thirdpartytoken', 'bearerAuth')))
+                   .auth(Single.new('thirdpartytoken')))
         .response(new_response_handler
                     .deserializer(APIHelper.method(:custom_type_deserializer))
                     .deserialize_into(MeResponse.method(:from_hash))
@@ -46,7 +46,7 @@ module TeslaFleetManagementApi
                                      '/api/1/users/orders',
                                      Server::DEFAULT)
                    .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(Or.new('thirdpartytoken', 'bearerAuth')))
+                   .auth(Single.new('thirdpartytoken')))
         .response(new_response_handler
                     .deserializer(APIHelper.method(:custom_type_deserializer))
                     .deserialize_into(OrdersResponse.method(:from_hash))
@@ -62,7 +62,7 @@ module TeslaFleetManagementApi
                                      '/api/1/users/region',
                                      Server::DEFAULT)
                    .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(Or.new('thirdpartytoken', 'bearerAuth')))
+                   .auth(Single.new('thirdpartytoken')))
         .response(new_response_handler
                     .deserializer(APIHelper.method(:custom_type_deserializer))
                     .deserialize_into(RegionResponse.method(:from_hash))
