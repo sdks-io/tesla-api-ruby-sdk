@@ -14,7 +14,7 @@ module TeslaFleetManagementApi
                                      '/api/1/vehicles',
                                      Server::DEFAULT)
                    .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(And.new('bearerAuth', 'thirdpartytoken')))
+                   .auth(Or.new('thirdpartytoken', 'bearerAuth')))
         .response(new_response_handler
                     .deserializer(APIHelper.method(:custom_type_deserializer))
                     .deserialize_into(Api1VehiclesResponse.method(:from_hash))
@@ -35,7 +35,7 @@ module TeslaFleetManagementApi
                                     .is_required(true)
                                     .should_encode(true))
                    .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(And.new('bearerAuth', 'thirdpartytoken')))
+                   .auth(Or.new('thirdpartytoken', 'bearerAuth')))
         .response(new_response_handler
                     .deserializer(APIHelper.method(:custom_type_deserializer))
                     .deserialize_into(Api1VehiclesResponseGetVehicle.method(:from_hash))
@@ -56,7 +56,7 @@ module TeslaFleetManagementApi
                                     .is_required(true)
                                     .should_encode(true))
                    .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(And.new('bearerAuth', 'thirdpartytoken')))
+                   .auth(Or.new('thirdpartytoken', 'bearerAuth')))
         .response(new_response_handler
                     .deserializer(APIHelper.method(:custom_type_deserializer))
                     .deserialize_into(Api1VehiclesMobileEnabledResponse.method(:from_hash))
@@ -77,7 +77,7 @@ module TeslaFleetManagementApi
                                     .is_required(true)
                                     .should_encode(true))
                    .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(And.new('bearerAuth', 'thirdpartytoken')))
+                   .auth(Or.new('thirdpartytoken', 'bearerAuth')))
         .response(new_response_handler
                     .deserializer(APIHelper.method(:custom_type_deserializer))
                     .deserialize_into(Api1VehiclesNearbyChargingSitesResponse.method(:from_hash))
@@ -98,7 +98,7 @@ module TeslaFleetManagementApi
                                     .is_required(true)
                                     .should_encode(true))
                    .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(And.new('bearerAuth', 'thirdpartytoken')))
+                   .auth(Or.new('thirdpartytoken', 'bearerAuth')))
         .response(new_response_handler
                     .deserializer(APIHelper.method(:custom_type_deserializer))
                     .deserialize_into(SiteInfoResponse.method(:from_hash))
@@ -119,7 +119,7 @@ module TeslaFleetManagementApi
                                     .is_required(true)
                                     .should_encode(true))
                    .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(And.new('bearerAuth', 'thirdpartytoken')))
+                   .auth(Or.new('thirdpartytoken', 'bearerAuth')))
         .response(new_response_handler
                     .deserializer(APIHelper.method(:custom_type_deserializer))
                     .deserialize_into(Api1VehiclesWakeUpResponse.method(:from_hash))
@@ -139,7 +139,7 @@ module TeslaFleetManagementApi
                                     .is_required(true)
                                     .should_encode(true))
                    .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(And.new('bearerAuth', 'thirdpartytoken')))
+                   .auth(Or.new('thirdpartytoken', 'bearerAuth')))
         .response(new_response_handler
                     .deserializer(APIHelper.method(:custom_type_deserializer))
                     .deserialize_into(SiteInfoResponse.method(:from_hash))
@@ -158,7 +158,7 @@ module TeslaFleetManagementApi
                    .query_param(new_parameter(vin, key: 'vin')
                                  .is_required(true))
                    .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(And.new('bearerAuth', 'thirdpartytoken')))
+                   .auth(Or.new('thirdpartytoken', 'bearerAuth')))
         .response(new_response_handler
                     .deserializer(APIHelper.method(:custom_type_deserializer))
                     .deserialize_into(Api1DxVehiclesOptionsResponse.method(:from_hash))
@@ -174,7 +174,7 @@ module TeslaFleetManagementApi
                                      '/api/1/dx/warranty/details',
                                      Server::DEFAULT)
                    .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(And.new('bearerAuth', 'thirdpartytoken')))
+                   .auth(Or.new('thirdpartytoken', 'bearerAuth')))
         .response(new_response_handler
                     .deserializer(APIHelper.method(:custom_type_deserializer))
                     .deserialize_into(Api1DxWarrantyDetailsResponse.method(:from_hash))
@@ -195,7 +195,7 @@ module TeslaFleetManagementApi
                                     .is_required(true)
                                     .should_encode(true))
                    .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(And.new('bearerAuth', 'thirdpartytoken')))
+                   .auth(Or.new('thirdpartytoken', 'bearerAuth')))
         .response(new_response_handler
                     .deserializer(APIHelper.method(:custom_type_deserializer))
                     .deserialize_into(DriversResponse.method(:from_hash))
@@ -216,7 +216,7 @@ module TeslaFleetManagementApi
                                     .is_required(true)
                                     .should_encode(true))
                    .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(And.new('bearerAuth', 'thirdpartytoken')))
+                   .auth(Or.new('thirdpartytoken', 'bearerAuth')))
         .response(new_response_handler
                     .deserializer(APIHelper.method(:custom_type_deserializer))
                     .deserialize_into(SimpleOkResponse.method(:from_hash))
@@ -235,7 +235,7 @@ module TeslaFleetManagementApi
                    .query_param(new_parameter(vin, key: 'vin')
                                  .is_required(true))
                    .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(And.new('bearerAuth', 'thirdpartytoken')))
+                   .auth(Or.new('thirdpartytoken', 'bearerAuth')))
         .response(new_response_handler
                     .deserializer(APIHelper.method(:custom_type_deserializer))
                     .deserialize_into(SiteInfoResponse.method(:from_hash))
@@ -254,7 +254,7 @@ module TeslaFleetManagementApi
                    .query_param(new_parameter(vin, key: 'vin')
                                  .is_required(true))
                    .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(And.new('bearerAuth', 'thirdpartytoken')))
+                   .auth(Or.new('thirdpartytoken', 'bearerAuth')))
         .response(new_response_handler
                     .deserializer(APIHelper.method(:custom_type_deserializer))
                     .deserialize_into(SiteInfoResponse.method(:from_hash))
@@ -280,7 +280,7 @@ module TeslaFleetManagementApi
                    .body_param(new_parameter(body)
                                 .is_required(true))
                    .body_serializer(proc do |param| param.to_json unless param.nil? end)
-                   .auth(And.new('bearerAuth', 'thirdpartytoken')))
+                   .auth(Or.new('thirdpartytoken', 'bearerAuth')))
         .response(new_response_handler
                     .is_response_void(true)
                     .is_api_response(true))
@@ -299,7 +299,7 @@ module TeslaFleetManagementApi
                                     .is_required(true)
                                     .should_encode(true))
                    .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(And.new('bearerAuth', 'thirdpartytoken')))
+                   .auth(Or.new('thirdpartytoken', 'bearerAuth')))
         .response(new_response_handler
                     .deserializer(APIHelper.method(:json_deserialize))
                     .is_api_response(true))
@@ -320,7 +320,7 @@ module TeslaFleetManagementApi
                                 .is_required(true))
                    .header_param(new_parameter('application/json', key: 'accept'))
                    .body_serializer(proc do |param| param.to_json unless param.nil? end)
-                   .auth(And.new('bearerAuth', 'thirdpartytoken')))
+                   .auth(Or.new('thirdpartytoken', 'bearerAuth')))
         .response(new_response_handler
                     .deserializer(APIHelper.method(:json_deserialize))
                     .is_api_response(true))
@@ -340,7 +340,7 @@ module TeslaFleetManagementApi
                                 .is_required(true))
                    .header_param(new_parameter('application/json', key: 'accept'))
                    .body_serializer(APIHelper.method(:json_serialize))
-                   .auth(And.new('bearerAuth', 'thirdpartytoken')))
+                   .auth(Or.new('thirdpartytoken', 'bearerAuth')))
         .response(new_response_handler
                     .deserializer(APIHelper.method(:json_deserialize))
                     .is_api_response(true))
@@ -360,7 +360,7 @@ module TeslaFleetManagementApi
                                     .is_required(true)
                                     .should_encode(true))
                    .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(And.new('bearerAuth', 'thirdpartytoken')))
+                   .auth(Or.new('thirdpartytoken', 'bearerAuth')))
         .response(new_response_handler
                     .deserializer(APIHelper.method(:json_deserialize))
                     .is_api_response(true))
@@ -380,7 +380,7 @@ module TeslaFleetManagementApi
                                     .is_required(true)
                                     .should_encode(true))
                    .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(And.new('bearerAuth', 'thirdpartytoken')))
+                   .auth(Or.new('thirdpartytoken', 'bearerAuth')))
         .response(new_response_handler
                     .deserializer(APIHelper.method(:json_deserialize))
                     .is_api_response(true))
@@ -401,7 +401,7 @@ module TeslaFleetManagementApi
                                 .is_required(true))
                    .header_param(new_parameter('application/json', key: 'accept'))
                    .body_serializer(proc do |param| param.to_json unless param.nil? end)
-                   .auth(And.new('bearerAuth', 'thirdpartytoken')))
+                   .auth(Or.new('thirdpartytoken', 'bearerAuth')))
         .response(new_response_handler
                     .deserializer(APIHelper.method(:json_deserialize))
                     .is_api_response(true))
@@ -421,7 +421,7 @@ module TeslaFleetManagementApi
                                     .is_required(true)
                                     .should_encode(true))
                    .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(And.new('bearerAuth', 'thirdpartytoken')))
+                   .auth(Or.new('thirdpartytoken', 'bearerAuth')))
         .response(new_response_handler
                     .deserializer(APIHelper.method(:json_deserialize))
                     .is_api_response(true))
